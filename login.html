@@ -14,7 +14,7 @@
     <header>
         <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
           <div class="container-fluid">
-            <a class="navbar-brand" href="#">ZJ Health</a>
+            <a class="navbar-brand" href="index.html">ZJ Health</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -31,9 +31,9 @@
                       Services
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      <li><a class="dropdown-item" href="#">Appointments</a></li>
-                      <li><a class="dropdown-item" href="#">Perscriptions</a></li>
-                      <li><a class="dropdown-item" href="#">Lab Testing</a></li>
+                      <li><a class="dropdown-item" href="index.html#cards">Appointments</a></li>
+                      <li><a class="dropdown-item" href="index.html#cards">Perscriptions</a></li>
+                      <li><a class="dropdown-item" href="index.html#cards">Lab Testing</a></li>
                     </ul>
                   </li>
               </ul>
@@ -44,7 +44,7 @@
       </header>
       <br />
 
-    <form>
+    <form action="localhost:8080/api/users/login" method="POST">
         <div class="form-group mt-5">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -57,12 +57,12 @@
                     <p class="text-white-50 mb-5">Please enter your email and password</p>
       
                     <div class="form-outline form-white mb-4">
-                      <input type="email" class="form-control form-control-lg" />
+                      <input type="email" name="email" class="form-control form-control-lg" />
                       <label class="form-label">Email</label>
                     </div>
       
                     <div class="form-outline form-white mb-4">
-                      <input type="password" class="form-control form-control-lg" />
+                      <input type="password" name="password" class="form-control" form-control-lg" />
                       <label class="form-label">Password</label>
                     </div>
       
@@ -82,6 +82,7 @@
           </div>
         </div>
     </form>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
