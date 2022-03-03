@@ -35,17 +35,88 @@
                           <li><a class="dropdown-item" href="#cards">Lab Testing</a></li>
                         </ul>
                       </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Views
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <li><a class="dropdown-item" href="#cards">View Perscriptions</a></li>
+                          <li><a class="dropdown-item" href="#cards">View Lab Results</a></li>
+                          <li><a class="dropdown-item" href="#cards">View Appointments</a></li>
+                          <li><a class="dropdown-item" href="#cards">View Diagnoses</a></li>
+                          <li><a class="dropdown-item" href="#cards">View Treatments</a></li>
+                          <li><a class="dropdown-item" href="#cards">View Insurance</a></li>
+                        </ul>
+                      </li>
                   </ul>
-                  <form action="http://localhost:8080/api/user/logout">
+                  <form method="POST" action="http://localhost:8080/api/user/logout">
                     <button class="btn btn-outline-success" type="submit">Logout</button>
                   </form>
                 </div>
               </div>
             </nav>
           </header>
+    <div class="mt-5">
+        <h1 class="text-center" style="color: navy;">Welcome</h1>
+        <br />
+        <h2 class="text-center" style="color: navy;">Current Appointments</h2>
+        <p class="text-center"><a href="#" class="btn btn-outline-success">Create New Apppointment</a></p>
+        <hr />
+    </div>
+    <!-- <div id="myData"></div> -->
+    <!-- <script>
+        fetch('people.json')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                appendData(data);
+            })
+            .catch(function (err) {
+                console.log('error: ' + err);
+            });
+        function appendData(data) {
+            const mainContainer = document.getElementById("myData");
+            for (const i = 0; i < data.length; i++) {
+                const div = document.createElement("div");
+                div.innerHTML = 'Name: ' + data[i].firstName + ' ' + data[i].lastName;
+                mainContainer.appendChild(div);
+            }
+        }
+    </script> -->
 
+    <div class="card text-center bg-primary border border-dark border-5">
+        <div class="card-body">
+          <h5 class="card-title text-light">Appointment</h5>
+          <p class="card-text text-light">User</p>
+          <p class="card-text text-light">Doctor</p>
+          <p class="card-text text-light">Time/date</p>
+          <a href="#" class="btn btn-primary border btn-outline-danger text-light">Cancel Appointment</a>
+          <a href="#" class="btn btn-primary border btn-outline-success text-light">Review Appointment</a>
+        </div>
+    </div>
 
+    <div class="card text-center bg-primary border border-dark border-5 mt-5">
+        <div class="card-body">
+          <h5 class="card-title text-light">Appointment</h5>
+          <p class="card-text text-light">User</p>
+          <p class="card-text text-light">Doctor</p>
+          <p class="card-text text-light">Time/date</p>
+          <a href="#" class="btn btn-primary border btn-outline-danger text-light">Cancel Appointment</a>
+          <a href="#" class="btn btn-primary border btn-outline-success text-light">Review Appointment</a>
+        </div>
+    </div>
 
+    <div class="card text-center bg-primary border border-dark border-5 mt-5 mb-5">
+        <div class="card-body">
+          <h5 class="card-title text-light">Appointment</h5>
+          <p class="card-text text-light">User</p>
+          <p class="card-text text-light">Doctor</p>
+          <p class="card-text text-light">Time/date</p>
+          <a href="#" class="btn btn-primary border btn-outline-danger text-light">Cancel Appointment</a>
+          <a href="#" class="btn btn-primary border btn-outline-success text-light">Review Appointment</a>
+        </div>
+    </div>
 
 
 
