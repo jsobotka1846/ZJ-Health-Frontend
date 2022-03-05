@@ -1,4 +1,22 @@
+
+
 const Navbar = () => {
+
+  const logout = (e) => {
+    e.preventDefault();
+
+    fetch("http://localhost:8080/logout", {
+            method: "POST",
+            credentials: "include"
+
+        }).then(()=> {
+            console.log("logged out");
+            
+
+        })
+    
+}
+
     return (
         <header>
         <nav className="navbar navbar-expand-md navbar-light fixed-top bg-light">
@@ -10,7 +28,7 @@ const Navbar = () => {
             <div className="collapse navbar-collapse" id="navbarCollapse">
               <ul className="navbar-nav me-auto mb-2 mb-md-0">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="index.html">Home</a>
+                  <a className="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link active" href="#">Directory</a>
@@ -26,7 +44,7 @@ const Navbar = () => {
                     </ul>
                   </li>
               </ul>
-              <a href="login.html"><button className="btn btn-outline-success" type="submit">Login</button></a>
+              <button className="btn btn-outline-success" type="submit" onClick={logout}>Logout</button>
             </div>
           </div>
         </nav>

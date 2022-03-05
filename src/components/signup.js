@@ -1,8 +1,5 @@
 import React from "react";
 const Signup = () => {
-    
-
-    
 
     const submit = (e) => {
         e.preventDefault();

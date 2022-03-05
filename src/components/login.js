@@ -1,7 +1,38 @@
+import { Navigate, useNavigate } from 'react-router-dom';
+
 const Login = () => {
-    return ( 
+    const navigate = useNavigate();
+    const login = (e) => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        const credentials = {email, password};
         
-    <form method="POST">
+        
+        
+
+        fetch("http://localhost:8080/api/user/login", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(credentials),
+            credentials: "include"
+
+        }).then((response)=> {
+            if (response.status!=200) {
+              window.location.reload();
+                          
+            }
+            else {
+              navigate("/");
+            }
+            
+        })
+      
+    }
+
+    return ( 
+
+    <form onSubmit={login}>
         <div className="form-group mt-5">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -12,6 +43,7 @@ const Login = () => {
       
                     <h2 className="font-weight-bold text-uppercase">Login</h2>
                     <p className="text-white-50 mb-5">Please enter your email and password</p>
+                   
       
                     <div className="form-outline form-white mb-4">
                       <input type="email" name="email" className="form-control form-control-lg" />
@@ -30,7 +62,7 @@ const Login = () => {
                   </div>
       
                   <div>
-                    <p className="mb-0">Don't have an account? <a href="signup.html" className="text-white-50 fw-bold">Sign Up</a></p>
+                    <p className="mb-0">Don't have an account? <a href="/signup" className="text-white-50 fw-bold">Sign Up</a></p>
                   </div>
       
                 </div>

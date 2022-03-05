@@ -7,23 +7,22 @@ import Signup from './components/signup';
 import Profile from './components/profile';
 function App() {
   
-
+  
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Navbar/>
-          <div>
-          <Routes>
-            <Route path="/" element={<Home/>} />
-            <Route path="/login" element={<Login/>} />
-            <Route path="/signup" element={<Signup/>} />
-            <Route path="/profile" element={<Profile/>} />
-          </Routes>
-          </div>
-          
-      </div>
-    </BrowserRouter>
-    
+      <BrowserRouter>
+        <div className="App">
+          <Navbar/>
+            <div>
+              <Routes>
+                <Route path="/" element={<Home/>} />
+                <Route path="/login" element={<Login/>} />
+                <Route path="/signup" element={<Signup/>} />
+                <Route path="/profile" element={<Profile/>} />
+              </Routes>
+            </div>
+            
+        </div>
+      </BrowserRouter>
   );
 }
 
