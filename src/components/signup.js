@@ -1,6 +1,7 @@
-import React from "react";
-const Signup = () => {
+import { useNavigate } from 'react-router-dom';
 
+const Signup = () => {
+    let navigate = useNavigate();
     const submit = (e) => {
         e.preventDefault();
         const email = e.target.email.value;
@@ -26,6 +27,8 @@ const Signup = () => {
             
         }).then(()=> {
             console.log("added");
+            navigate("/login");
+
         })
     }
     
