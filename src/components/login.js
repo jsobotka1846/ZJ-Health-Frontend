@@ -18,6 +18,7 @@ const Login = () => {
         window.location.reload();
       } else {
         navigate("/profile");
+        window.location.reload();
       }
     });
   };
