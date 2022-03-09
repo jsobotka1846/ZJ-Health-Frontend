@@ -22,8 +22,6 @@ const Navbar = () => {
     
     }
     useEffect(() => {
-      console.log(Cookies.get("JSESSIONID"));
-      
       if (Cookies.get("JSESSIONID")==null) {
         const logStatus = <a href="/login"> <button className="btn btn-outline-success" type="submit">Login</button></a>
         setStatus(logStatus);

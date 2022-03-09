@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 const Profile = () => {
     const [appointments, setAppointments] = useState();
     let appts = [];
-    let loaded = false;
     useEffect(() => {
         
         axios.get("http://localhost:8080/api/appointment/user/appointments", {
@@ -12,8 +11,7 @@ const Profile = () => {
         })
             .then(response => {
                 
-                for (var appt of response.data) {
-                    console.log(appt);
+                for (let appt of response.data) {
                     appts.push(
                         <div className="card text-center bg-primary border border-dark border-5">
                             <div className="card-body">
