@@ -1,21 +1,37 @@
-
+import { useEffect, useState } from "react";
+import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+  const [status, setStatus] = useState();
+  const navigate = useNavigate();
 
   const logout = (e) => {
     e.preventDefault();
-
+    
     fetch("http://localhost:8080/logout", {
             method: "POST",
             credentials: "include"
 
         }).then(()=> {
-            console.log("logged out");
+          navigate("/");
+          window.location.reload();
             
 
         })
     
-}
+    }
+    useEffect(() => {
+      if (Cookies.get("JSESSIONID")==null) {
+        const logStatus = <a href="/login"> <button className="btn btn-outline-success" type="submit">Login</button></a>
+        setStatus(logStatus);
+      }
+      else {
+        const logStatus = <button className="btn btn-outline-success" type="submit" onClick={logout}>Logout</button>
+        setStatus(logStatus);
+      }
+      
+    }, [])
 
     return (
         <header>
@@ -44,7 +60,7 @@ const Navbar = () => {
                     </ul>
                   </li>
               </ul>
-              <button className="btn btn-outline-success" type="submit" onClick={logout}>Logout</button>
+              {status}
             </div>
           </div>
         </nav>

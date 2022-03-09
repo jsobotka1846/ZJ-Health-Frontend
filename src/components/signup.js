@@ -19,14 +19,12 @@ const Signup = () => {
         const user = {email, password, firstName, lastName, street, city, state, zip, phoneNum};
         const insurance = {insuranceName, type, policyNum};
         const req = {user, insurance};
-        console.log(user);
         fetch("http://localhost:8080/api/user/register", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(req)
             
         }).then(()=> {
-            console.log("added");
             navigate("/login");
 
         })
