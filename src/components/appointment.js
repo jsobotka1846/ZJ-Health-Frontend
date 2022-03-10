@@ -93,7 +93,7 @@ const Appointment = () => {
                       className="form-control"
                       required
                     />
-                    <label className="form-label">Requested Date</label>
+                    <label className="form-label">Requested Date/Time</label>
                   </div>
 
                   <div className="col-md-6 form-outline form-white mb-4">
@@ -156,7 +156,7 @@ const Appointment = () => {
 
                   <div className="col-md-3 form-outline form-white mb-4">
                     <input
-                      type="text"
+                      type="date"
                       name="symptomOnset"
                       className="form-control"
                       required
@@ -206,7 +206,7 @@ const Appointment = () => {
 
                   <div className="form-outline form-white mb-4">
                     <input
-                      type="datetime-local"
+                      type="date"
                       name="diagDate"
                       className="form-control"
                       required
