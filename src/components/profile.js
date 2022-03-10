@@ -1,9 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-
+import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 const Profile = () => {
   const [appointments, setAppointments] = useState();
   let appts = [];
+  const navigate = useNavigate();
 
   const delAppt = (id) => {
 
@@ -17,6 +19,12 @@ const Profile = () => {
 
 
   useEffect(() => {
+    if (Cookies.get("JSESSIONID")==null) {
+        navigate("/login");
+    }
+    
+
+
     axios
       .get("http://localhost:8080/api/appointment/user/appointments", {
         withCredentials: true
