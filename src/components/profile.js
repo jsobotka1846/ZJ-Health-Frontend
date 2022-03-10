@@ -4,10 +4,22 @@ import { useEffect, useState } from "react";
 const Profile = () => {
   const [appointments, setAppointments] = useState();
   let appts = [];
+
+  const delAppt = (id) => {
+
+      axios.delete("http://localhost:8080/api/appointment/delete/"+id, {
+          withCredentials: true
+      })
+      .then(() => {
+          window.location.reload();
+      })
+  }
+
+
   useEffect(() => {
     axios
       .get("http://localhost:8080/api/appointment/user/appointments", {
-        withCredentials: true,
+        withCredentials: true
       })
       .then((response) => {
         for (let appt of response.data) {
@@ -17,12 +29,12 @@ const Profile = () => {
                 <h5 className="card-title text-light">Appointment</h5>
                 <p className="card-text text-light">{appt.doctor.firstName}</p>
                 <p className="card-text text-light">{appt.date}</p>
-                <a
-                  href="#"
+                <button
                   className="btn btn-primary border btn-outline-danger text-light"
+                  onClick={() => delAppt(appt.id)}
                 >
                   Cancel Appointment
-                </a>
+                </button>
                 <a
                   href="#"
                   className="btn btn-primary border btn-outline-success text-light"
