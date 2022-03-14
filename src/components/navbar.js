@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const Navbar = () => {
   const [status, setStatus] = useState();
   const [signup, setSignup] = useState();
+  const [profile, setProfile] = useState();
   const navigate = useNavigate();
 
   const logout = (e) => {
@@ -29,8 +30,9 @@ const Navbar = () => {
       }
       else {
         const logStatus = <button className="item btn" type="submit" onClick={logout} style={{color: "white"}}>Logout</button>
-        
+        const showProfile = <a className="item nav-link" href="/profile" style={{color: "white"}}>View Profile</a>
         setStatus(logStatus);
+        setProfile(showProfile);
         
       }
       
@@ -42,6 +44,7 @@ const Navbar = () => {
             <div className="container-fluid">
               <div className="navbar-nav me-auto">
                 <div className="nav-item" >
+                  {profile}
                   <a className="item nav-link" href="/" style={{color: "white"}}>Home</a>
                   <a className="item nav-link" href="/" style={{color: "white"}}>Directory</a>
                   <div className="dropdown" style={{display: "inline-block"}}>
