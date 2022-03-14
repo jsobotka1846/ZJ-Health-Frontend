@@ -4,10 +4,11 @@ import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [status, setStatus] = useState();
+  const [signup, setSignup] = useState();
   const navigate = useNavigate();
 
   const logout = (e) => {
-    e.preventDefault();
+    
     
     fetch("http://localhost:8080/logout", {
             method: "POST",
@@ -16,55 +17,52 @@ const Navbar = () => {
         }).then(()=> {
           navigate("/");
           window.location.reload();
-            
-
         })
     
     }
     useEffect(() => {
       if (Cookies.get("JSESSIONID")==null) {
-        const logStatus = <a href="/login"> <button className="btn btn-outline-success" type="submit">Login</button></a>
+        const logStatus = <a href="/login"> <button className="item btn" type="submit" style={{color: "white"}}>Login</button></a>
+        const signupLink = <a className="item nav-link active" href="/signup" style={{color: "white"}}>Sign up</a>
         setStatus(logStatus);
+        setSignup(signupLink);
       }
       else {
-        const logStatus = <button className="btn btn-outline-success" type="submit" onClick={logout}>Logout</button>
+        const logStatus = <button className="item btn" type="submit" onClick={logout} style={{color: "white"}}>Logout</button>
+        
         setStatus(logStatus);
+        
       }
       
     }, [])
 
     return (
         <header>
-        <nav className="navbar navbar-expand-md navbar-light fixed-top bg-light">
-          <div className="container-fluid">
-            <a className="navbar-brand" href="#">ZJ Health</a>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarCollapse">
-              <ul className="navbar-nav me-auto mb-2 mb-md-0">
-                <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="/">Home</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link active" href="#">Directory</a>
-                </li>
-                <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Services
+          <nav className="navbar fixed-top ">
+            <div className="container-fluid">
+              <div className="navbar-nav me-auto">
+                <div className="nav-item" >
+                  <a className="item nav-link" href="/" style={{color: "white"}}>Home</a>
+                  <a className="item nav-link" href="/" style={{color: "white"}}>Directory</a>
+                  <div className="dropdown" style={{display: "inline-block"}}>
+                    <a className="drop nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" style={{color: "white"}}>
+                        Services
                     </a>
-                    <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <ul className="dropdown-menu" style={{position: "absolute"}}>
                       <li><a className="dropdown-item" href="#cards">Appointments</a></li>
                       <li><a className="dropdown-item" href="#cards">Perscriptions</a></li>
                       <li><a className="dropdown-item" href="#cards">Lab Testing</a></li>
                     </ul>
-                  </li>
-              </ul>
+                  </div>
+                  
+                </div>
+                
+              </div>
               {status}
+              {signup}
             </div>
-          </div>
-        </nav>
-        <br />
+          </nav>
+          <br />
       </header>
       );
 }

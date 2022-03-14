@@ -25,8 +25,7 @@ const Profile = () => {
     
 
 
-    axios
-      .get("http://localhost:8080/api/appointment/user/appointments", {
+    axios.get("http://localhost:8080/api/appointment/user/appointments", {
         withCredentials: true
       })
       .then((response) => {
