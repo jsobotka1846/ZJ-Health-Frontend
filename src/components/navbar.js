@@ -23,14 +23,14 @@ const Navbar = () => {
     }
     useEffect(() => {
       if (Cookies.get("JSESSIONID")==null) {
-        const logStatus = <a href="/login"> <button className="item btn" type="submit" style={{color: "white"}}>Login</button></a>
-        const signupLink = <a className="item nav-link active" href="/signup" style={{color: "white"}}>Sign up</a>
+        var logStatus = <a href="/login"> <button className="item btn" type="submit" style={{color: "white"}}>Login</button></a>
+        var signupLink = <a className="item nav-link active" href="/signup" style={{color: "white"}}>Sign up</a>
         setStatus(logStatus);
         setSignup(signupLink);
       }
       else {
-        const logStatus = <button className="item btn" type="submit" onClick={logout} style={{color: "white"}}>Logout</button>
-        const showProfile = <a className="item nav-link" href="/profile" style={{color: "white"}}>View Profile</a>
+        var logStatus = <button className="item btn" type="submit" onClick={logout} style={{color: "white"}}>Logout</button>
+        var showProfile = <a className="item nav-link" href="/profile" style={{color: "white"}}>View Profile</a>
         setStatus(logStatus);
         setProfile(showProfile);
         

@@ -4,7 +4,7 @@ const Appointment = () => {
   let navigate = useNavigate();
   const submit = (e) => {
     e.preventDefault();
-    const patientEmail = e.target.patientEmail.value;
+    // const patientEmail = e.target.patientEmail.value;
     const doctorEmail = e.target.doctorEmail.value;
     const date = e.target.date.value;
     const emergencyFirstName = e.target.emergencyFirstName.value;
@@ -20,7 +20,7 @@ const Appointment = () => {
     const diagDate = e.target.diagDate.value;
     const allergyName = e.target.allergyName.value;
     const allergyDesc = e.target.allergyDesc.value;
-    const emails = { patientEmail, doctorEmail, date };
+    const emails = { doctorEmail, date };
     const intake = {
       emergencyFirstName,
       emergencyLastName,
@@ -41,6 +41,7 @@ const Appointment = () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(req),
+      credentials: "include",
     }).then(() => {
       navigate("/profile");
     });
@@ -64,7 +65,7 @@ const Appointment = () => {
                     Please fill out the following fields
                   </p>
 
-                  <div className="col-md-6 form-outline form-white mb-4">
+                  {/* <div className="col-md-6 form-outline form-white mb-4">
                     <input
                       type="email"
                       name="patientEmail"
@@ -72,7 +73,7 @@ const Appointment = () => {
                       required
                     />
                     <label className="form-label">Your Email</label>
-                  </div>
+                  </div> */}
 
                   <div className="col-md-6 form-outline form-white mb-4">
                     <input
@@ -181,7 +182,7 @@ const Appointment = () => {
                       className="form-control"
                       required
                     />
-                    <label className="form-label">Cuurent Body Temp</label>
+                    <label className="form-label">Current Body Temp</label>
                   </div>
 
                   <div className="form-outline form-white mb-4">
