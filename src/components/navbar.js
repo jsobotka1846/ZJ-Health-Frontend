@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 const Navbar = () => {
   const [status, setStatus] = useState();
@@ -9,7 +10,6 @@ const Navbar = () => {
   const [createDr, setCreateDr] = useState();
   const navigate = useNavigate();
   var session = Cookies.get("JSESSIONID");
-
   const logout = (e) => {
   
     
@@ -18,7 +18,6 @@ const Navbar = () => {
             credentials: "include"
 
         }).then(()=> {
-          localStorage.clear();
           navigate("/");
         })
     
@@ -28,15 +27,23 @@ const Navbar = () => {
         setStatus(<a href="/login"> <button className="item btn" type="submit" style={{color: "white"}}>Login</button></a>);
         setSignup(<a className="item nav-link active" href="/signup" style={{color: "white"}}>Sign up</a>);
         setProfile(null);
+        setCreateDr(null);
       }
       else {
-        if (localStorage.getItem("role")=="administrator") {
-          setCreateDr(<a className="item nav-link" href="/admin/add" style={{color: "white"}}>Add Doctor</a>);
-          console.log("admin");
-        }
-        setStatus(<button className="item btn" type="submit" onClick={logout} style={{color: "white"}}>Logout</button>);
-        setProfile(<a className="item nav-link" href="/profile" style={{color: "white"}}>View Profile</a>);
-        setSignup(null);
+        axios.get("http://localhost:8080/api/user/role", {
+          withCredentials: true
+        })
+        .then((response) => {
+          var role = response.data;
+          if (role=="administrator") {
+            setCreateDr(<a className="item nav-link" href="/admin/add" style={{color: "white"}}>Add Doctor</a>);
+            console.log("admin");
+          }
+          setStatus(<button className="item btn" type="submit" onClick={logout} style={{color: "white"}}>Logout</button>);
+          setProfile(<a className="item nav-link" href="/profile" style={{color: "white"}}>View Profile</a>);
+          setSignup(null);
+        })
+        
       }
       
     }, [session])

@@ -18,8 +18,6 @@ const Login = () => {
         window.location.reload();
       } else {
         response.json().then(data => {
-          localStorage.setItem("email", data.email);
-          localStorage.setItem("role", data.role);
           navigate("/profile");
         })
         
