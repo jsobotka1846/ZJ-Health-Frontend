@@ -6,6 +6,7 @@ import Login from "./components/login";
 import Signup from "./components/signup";
 import Profile from "./components/profile";
 import Appointment from "./components/appointment";
+import Createdoc from "./components/createdoc";
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +19,7 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/appointment" element={<Appointment />} />
+            <Route path="/admin/add" element={<Createdoc />} />
           </Routes>
         </div>
       </div>

@@ -6,37 +6,40 @@ const Navbar = () => {
   const [status, setStatus] = useState();
   const [signup, setSignup] = useState();
   const [profile, setProfile] = useState();
+  const [createDr, setCreateDr] = useState();
   const navigate = useNavigate();
+  var session = Cookies.get("JSESSIONID");
 
   const logout = (e) => {
-    
+  
     
     fetch("http://localhost:8080/logout", {
             method: "POST",
             credentials: "include"
 
         }).then(()=> {
+          localStorage.clear();
           navigate("/");
-          window.location.reload();
         })
     
     }
     useEffect(() => {
-      if (Cookies.get("JSESSIONID")==null) {
-        var logStatus = <a href="/login"> <button className="item btn" type="submit" style={{color: "white"}}>Login</button></a>
-        var signupLink = <a className="item nav-link active" href="/signup" style={{color: "white"}}>Sign up</a>
-        setStatus(logStatus);
-        setSignup(signupLink);
+      if (session==null) {
+        setStatus(<a href="/login"> <button className="item btn" type="submit" style={{color: "white"}}>Login</button></a>);
+        setSignup(<a className="item nav-link active" href="/signup" style={{color: "white"}}>Sign up</a>);
+        setProfile(null);
       }
       else {
-        var logStatus = <button className="item btn" type="submit" onClick={logout} style={{color: "white"}}>Logout</button>
-        var showProfile = <a className="item nav-link" href="/profile" style={{color: "white"}}>View Profile</a>
-        setStatus(logStatus);
-        setProfile(showProfile);
-        
+        if (localStorage.getItem("role")=="administrator") {
+          setCreateDr(<a className="item nav-link" href="/admin/add" style={{color: "white"}}>Add Doctor</a>);
+          console.log("admin");
+        }
+        setStatus(<button className="item btn" type="submit" onClick={logout} style={{color: "white"}}>Logout</button>);
+        setProfile(<a className="item nav-link" href="/profile" style={{color: "white"}}>View Profile</a>);
+        setSignup(null);
       }
       
-    }, [])
+    }, [session])
 
     return (
         <header>
@@ -58,6 +61,7 @@ const Navbar = () => {
                     </ul>
                   </div>
                   
+                  {createDr}
                 </div>
                 
               </div>

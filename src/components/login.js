@@ -14,11 +14,16 @@ const Login = () => {
       body: JSON.stringify(credentials),
       credentials: "include",
     }).then((response) => {
-      if (response.status != 200) {
+      if (response.status !== 200) {
         window.location.reload();
       } else {
-        navigate("/profile");
-        window.location.reload();
+        response.json().then(data => {
+          localStorage.setItem("email", data.email);
+          localStorage.setItem("role", data.role);
+          navigate("/profile");
+        })
+        
+        
       }
     });
   };

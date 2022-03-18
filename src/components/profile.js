@@ -22,9 +22,6 @@ const Profile = () => {
     if (Cookies.get("JSESSIONID")==null) {
         navigate("/login");
     }
-    
-
-
     axios.get("http://localhost:8080/api/appointment/user/appointments", {
         withCredentials: true
       })
