@@ -8,6 +8,8 @@ const Navbar = () => {
   const [signup, setSignup] = useState();
   const [profile, setProfile] = useState();
   const [createDr, setCreateDr] = useState();
+  const [lab, setLab] = useState();
+  const [createPrescription, setCreatePrescription] = useState();
   const navigate = useNavigate();
   var session = Cookies.get("JSESSIONID");
   const logout = (e) => {
@@ -28,6 +30,8 @@ const Navbar = () => {
         setSignup(<a className="item nav-link active" href="/signup" style={{color: "white"}}>Sign up</a>);
         setProfile(null);
         setCreateDr(null);
+        setLab(null);
+        setCreatePrescription(null);
       }
       else {
         axios.get("http://localhost:8080/api/user/role", {
@@ -37,7 +41,10 @@ const Navbar = () => {
           var role = response.data;
           if (role=="administrator") {
             setCreateDr(<a className="item nav-link" href="/admin/add" style={{color: "white"}}>Add Doctor</a>);
-            console.log("admin");
+          }
+          else if (role=="doctor") {
+            setLab(<a className="item nav-link" href="/lab/create" style={{color: "white"}}>Schedule Lab</a>)
+            setCreatePrescription(<a className="item nav-link" href="/prescription/create" style={{color: "white"}}>Create Prescription</a>);
           }
           setStatus(<button className="item btn" type="submit" onClick={logout} style={{color: "white"}}>Logout</button>);
           setProfile(<a className="item nav-link" href="/profile" style={{color: "white"}}>View Profile</a>);
@@ -69,6 +76,8 @@ const Navbar = () => {
                   </div>
                   
                   {createDr}
+                  {lab}
+                  {createPrescription}
                 </div>
                 
               </div>

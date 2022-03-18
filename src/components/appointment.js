@@ -4,7 +4,6 @@ const Appointment = () => {
   let navigate = useNavigate();
   const submit = (e) => {
     e.preventDefault();
-    // const patientEmail = e.target.patientEmail.value;
     const doctorEmail = e.target.doctorEmail.value;
     const date = e.target.date.value;
     const emergencyFirstName = e.target.emergencyFirstName.value;
@@ -64,16 +63,6 @@ const Appointment = () => {
                   <p className="text-white-50 mb-5">
                     Please fill out the following fields
                   </p>
-
-                  {/* <div className="col-md-6 form-outline form-white mb-4">
-                    <input
-                      type="email"
-                      name="patientEmail"
-                      className="form-control"
-                      required
-                    />
-                    <label className="form-label">Your Email</label>
-                  </div> */}
 
                   <div className="col-md-6 form-outline form-white mb-4">
                     <input
