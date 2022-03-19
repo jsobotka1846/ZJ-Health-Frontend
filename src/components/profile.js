@@ -33,16 +33,10 @@ const Profile = () => {
                 <h5 className="card-title text-light">Appointment</h5>
                 <p className="card-text text-light">{appt.doctor.firstName}</p>
                 <p className="card-text text-light">{appt.date}</p>
-                <button
-                  className="btn btn-primary border btn-outline-danger text-light"
-                  onClick={() => delAppt(appt.id)}
-                >
+                <button className="btn btn-primary border btn-outline-danger text-light" onClick={() => delAppt(appt.id)}>
                   Cancel Appointment
                 </button>
-                <a
-                  href="#"
-                  className="btn btn-primary border btn-outline-success text-light"
-                >
+                <a href="#" className="btn btn-primary border btn-outline-success text-light">
                   Review Appointment
                 </a>
               </div>

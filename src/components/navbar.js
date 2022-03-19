@@ -70,7 +70,7 @@ const Navbar = () => {
                     </a>
                     <ul className="dropdown-menu" style={{position: "absolute"}}>
                       <li><a className="dropdown-item" href="#cards">Appointments</a></li>
-                      <li><a className="dropdown-item" href="#cards">Perscriptions</a></li>
+                      <li><a className="dropdown-item" href="/profile/prescriptions">Prescriptions</a></li>
                       <li><a className="dropdown-item" href="#cards">Lab Testing</a></li>
                     </ul>
                   </div>

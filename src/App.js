@@ -9,6 +9,7 @@ import Appointment from "./components/appointment";
 import Createdoc from "./components/createdoc";
 import ScheduleLab from "./components/scheduleLab";
 import CreatePrescription from "./components/createPrescription";
+import PatientPrescriptions from "./components/patientPrescriptions";
 function App() {
   return (
     <BrowserRouter>
@@ -24,6 +25,8 @@ function App() {
             <Route path="/admin/add" element={<Createdoc />} />
             <Route path="/lab/create" element={<ScheduleLab />} />
             <Route path="/prescription/create" element={<CreatePrescription />} />
+            <Route path="/profile/prescriptions" element={<PatientPrescriptions />} />
+
           </Routes>
         </div>
       </div>
