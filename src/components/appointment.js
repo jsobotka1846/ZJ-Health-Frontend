@@ -122,7 +122,7 @@ const Appointment = () => {
                     </label>
                   </div>
 
-                  <div className="col-md-7 form-outline form-white mb-4">
+                  <div className="col-md-6 form-outline form-white mb-4">
                     <input
                       type="text"
                       name="emergencyRelation"
@@ -134,7 +134,7 @@ const Appointment = () => {
                     </label>
                   </div>
 
-                  <div className="col-md-7 form-outline form-white mb-4">
+                  <div className="col-md-12 form-outline form-white mb-4">
                     <input
                       type="text"
                       name="primarySymptoms"
@@ -144,7 +144,7 @@ const Appointment = () => {
                     <label className="form-label">Primary Symptoms</label>
                   </div>
 
-                  <div className="col-md-3 form-outline form-white mb-4">
+                  <div className="col-md-5 form-outline form-white mb-4">
                     <input
                       type="date"
                       name="symptomOnset"
@@ -154,9 +154,10 @@ const Appointment = () => {
                     <label className="form-label">Symptom Onset Date</label>
                   </div>
 
-                  <div className="form-outline form-white mb-4">
-                    <input
-                      type="text"
+                  <div className="col-md-7 form-outline form-white mb-4">
+                    <textarea
+                      rows="5"
+                      cols="50"
                       name="symptomDesc"
                       className="form-control"
                       required
@@ -164,7 +165,7 @@ const Appointment = () => {
                     <label className="form-label">Symptom Description</label>
                   </div>
 
-                  <div className="form-outline form-white mb-4">
+                  <div className="col-md-6 form-outline form-white mb-4">
                     <input
                       type="number"
                       name="currentTemp"
@@ -174,7 +175,7 @@ const Appointment = () => {
                     <label className="form-label">Current Body Temp</label>
                   </div>
 
-                  <div className="form-outline form-white mb-4">
+                  <div className="col-md-6 form-outline form-white mb-4">
                     <input
                       type="text"
                       name="medicationName"
@@ -184,7 +185,7 @@ const Appointment = () => {
                     <label className="form-label">Current Medications</label>
                   </div>
 
-                  <div className="form-outline form-white mb-4">
+                  <div className="col-md-6 form-outline form-white mb-4">
                     <input
                       type="text"
                       name="doseage"
@@ -194,7 +195,7 @@ const Appointment = () => {
                     <label className="form-label">Doseage of Medication</label>
                   </div>
 
-                  <div className="form-outline form-white mb-4">
+                  <div className="col-md-6 form-outline form-white mb-4">
                     <input
                       type="date"
                       name="diagDate"
@@ -204,7 +205,7 @@ const Appointment = () => {
                     <label className="form-label">Date of Diagnosis</label>
                   </div>
 
-                  <div className="form-outline form-white mb-4">
+                  <div className="col-md-5 form-outline form-white mb-4">
                     <input
                       type="text"
                       name="allergyName"
@@ -214,9 +215,10 @@ const Appointment = () => {
                     <label className="form-label">Current Allergies</label>
                   </div>
 
-                  <div className="form-outline form-white mb-4">
-                    <input
-                      type="text"
+                  <div className="col-md-7 form-outline form-white mb-4">
+                    <textarea
+                      rows="5"
+                      cols="50"
                       name="allergyDesc"
                       className="form-control"
                       required
