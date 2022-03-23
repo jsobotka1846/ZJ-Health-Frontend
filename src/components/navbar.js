@@ -24,7 +24,6 @@ const Navbar = () => {
     if (session == null) {
       setStatus(
         <a href="/login">
-          {" "}
           <button className="item btn" type="submit" style={{ color: "white" }}>
             Login
           </button>
@@ -44,11 +43,9 @@ const Navbar = () => {
       setLab(null);
       setCreatePrescription(null);
     } else {
-      axios
-        .get("http://localhost:8080/api/user/role", {
+      axios.get("http://localhost:8080/api/user/role", {
           withCredentials: true,
-        })
-        .then((response) => {
+        }).then((response) => {
           var role = response.data;
           if (role == "administrator") {
             setCreateDr(
