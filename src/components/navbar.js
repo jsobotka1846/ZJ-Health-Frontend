@@ -115,7 +115,11 @@ const Navbar = () => {
               <a className="item nav-link" href="/" style={{ color: "white" }}>
                 Home
               </a>
-              <a className="item nav-link" href="/" style={{ color: "white" }}>
+              <a
+                className="item nav-link"
+                href="/directory"
+                style={{ color: "white" }}
+              >
                 Directory
               </a>
               <div className="dropdown" style={{ display: "inline-block" }}>
