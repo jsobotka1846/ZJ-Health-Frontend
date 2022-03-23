@@ -26,14 +26,8 @@ function App() {
             <Route path="/appointment" element={<Appointment />} />
             <Route path="/admin/add" element={<Createdoc />} />
             <Route path="/lab/create" element={<ScheduleLab />} />
-            <Route
-              path="/prescription/create"
-              element={<CreatePrescription />}
-            />
-            <Route
-              path="/profile/prescriptions"
-              element={<PatientPrescriptions />}
-            />
+            <Route path="/prescription/create" element={<CreatePrescription />} />
+            <Route path="/profile/prescriptions"element={<PatientPrescriptions />} />
           </Routes>
         </div>
       </div>
