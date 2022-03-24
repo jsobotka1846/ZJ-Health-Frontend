@@ -4,19 +4,16 @@ import { useEffect, useState } from "react";
 
 const Directory = () => {
   const [doctors, setDoctors] = useState();
-  const returnedDoctors = [];
-  const [filter, setFilter] = useState("");
-  const searchValue = (e) => {
-    setFilter(e.target.value);
-  };
-  console.log(filter);
+  var returnedDoctors = [];
 
   const findDoctor = (e) => {
+    e.preventDefault();
+    returnedDoctors = [];
     axios
       .get(
-        "http://localhost:8080/api/doctor/find?name=" + e.target.name.value,
+        "http://localhost:8080/api/doctor/find?name="+e.target.name.value,
         {
-          withCredentials: true,
+          withCredentials: true
         }
       )
       .then((response) => {
@@ -89,6 +86,8 @@ const Directory = () => {
             <form onSubmit={findDoctor}>
               <label className="form-label mt-2">Search</label>
               <input name="name" type="text" className="form-control" />
+
+              <button className="btn" type="submit">Search</button>
             </form>
           </div>
         </div>
