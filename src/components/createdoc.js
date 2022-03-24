@@ -9,12 +9,18 @@ const Createdoc = () => {
     const deptName = e.target.deptName.value;
     const specialty = e.target.specialty.value;
     const salary = e.target.salary.value;
-    const req = { email, deptName, specialty, salary };
-    console.log(req);
+    const photoPath = e.target.photoPath.files[0];
+    const req = { email, deptName, specialty, salary, photoPath };
+    var datas = new FormData();
+    datas.append("email", email);
+    datas.append("deptName", deptName);
+    datas.append("specialty", specialty);
+    datas.append("salary", salary);
+    datas.append("photoPath", photoPath);
+    console.log(photoPath);
     fetch("http://localhost:8080/api/doctor/update", {
       method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(req),
+      body: datas,
       credentials: "include",
     }).then(() => {
       setMessage(

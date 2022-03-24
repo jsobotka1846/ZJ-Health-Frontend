@@ -10,7 +10,8 @@
 
 # production
 /build
-
+src/images/*
+!src/images/placeholder
 # misc
 .DS_Store
 .env.local

@@ -13,11 +13,11 @@ const Directory = () => {
     withCredentials: true
     }).then((response) => {
       for (let user of response.data) {
-        console.log(user);
         returnedDoctors.push(
         <div className="col-11 col-md-6 col-lg-3 mx=0 mb-4">
           <div className="card p-0 overfolow-hidden h-100 shadow">
-            <img src={user.doctor.photoPath} className="card-img-top" />
+            {console.log(user.doctor.photoPath)}
+            <img src={require("../images/"+user.doctor.photoPath)} className="card-img-top" />
             <div className="card-body">
               <h5 className="card-title">
                 {user.firstName} {user.lastName}
