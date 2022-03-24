@@ -2,8 +2,6 @@ import '../css/main.css';
 
 const Home = () => {
 
-    
-
     return ( 
         <div className="home">
             <div className="mt-5">

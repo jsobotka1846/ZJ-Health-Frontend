@@ -10,24 +10,32 @@ const Createdoc = () => {
     const specialty = e.target.specialty.value;
     const salary = e.target.salary.value;
     const photoPath = e.target.photoPath.files[0];
-    const req = { email, deptName, specialty, salary, photoPath };
-    var datas = new FormData();
-    datas.append("email", email);
-    datas.append("deptName", deptName);
-    datas.append("specialty", specialty);
-    datas.append("salary", salary);
-    datas.append("photoPath", photoPath);
-    console.log(photoPath);
+    const docInfo = new FormData();
+    docInfo.append("email", email);
+    docInfo.append("deptName", deptName);
+    docInfo.append("specialty", specialty);
+    docInfo.append("salary", salary);
+    docInfo.append("photoPath", photoPath);
     fetch("http://localhost:8080/api/doctor/update", {
       method: "PUT",
-      body: datas,
+      body: docInfo,
       credentials: "include",
-    }).then(() => {
-      setMessage(
-        <h1 className="bg-success" style={{ fontSize: "16px" }}>
-          Set Doctor Role for {email}
-        </h1>
-      );
+    }).then((response) => {
+      if (response.status != 200) {
+        setMessage(
+          <h1 className="bg-danger" style={{ fontSize: "16px" }}>
+            Invalid request, double check doctor email and department
+          </h1>
+        );
+      }
+      else {
+        setMessage(
+          <h1 className="bg-success" style={{ fontSize: "16px" }}>
+            Set Doctor Role for {email}
+          </h1>
+        );
+      }
+      
     });
   };
 
@@ -47,7 +55,7 @@ const Createdoc = () => {
                     Create Doctor Account
                   </h2>
                   <p className="text-white-50 mb-5">
-                    Please fill out the following fields
+                    Please fill out the following docInfo
                   </p>
 
                   <div className="col-md-6 form-outline form-white mb-4">

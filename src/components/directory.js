@@ -1,8 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Cookies from "js-cookie";
-import { data } from "browserslist";
+
 
 const Directory = () => {
   const [doctors, setDoctors] = useState();
@@ -16,7 +15,6 @@ const Directory = () => {
         returnedDoctors.push(
         <div className="col-11 col-md-6 col-lg-3 mx=0 mb-4">
           <div className="card p-0 overfolow-hidden h-100 shadow">
-            {console.log(user.doctor.photoPath)}
             <img src={require("../images/"+user.doctor.photoPath)} className="card-img-top" />
             <div className="card-body">
               <h5 className="card-title">

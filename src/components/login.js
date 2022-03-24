@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [message, setMessage] = useState();
   const login = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -15,7 +17,12 @@ const Login = () => {
       credentials: "include",
     }).then((response) => {
       if (response.status !== 200) {
-        window.location.reload();
+        setMessage(
+          <h1 className="bg-danger" style={{ fontSize: "16px" }}>
+            Invalid email or password
+          </h1>
+        );
+        e.target.password.value="";
       } else {
         response.json().then(data => {
           navigate("/profile");
@@ -37,6 +44,7 @@ const Login = () => {
             >
               <div className="card-body p-5 text-center">
                 <div className="mb-md-5 mt-md-4 pb-5">
+                  {message}
                   <h2 className="font-weight-bold text-uppercase">Login</h2>
                   <p className="text-white-50 mb-5">
                     Please enter your email and password
