@@ -11,9 +11,9 @@ const Directory = () => {
     returnedDoctors = [];
     axios
       .get(
-        "http://localhost:8080/api/doctor/find?name="+e.target.name.value,
+        "http://localhost:8080/api/doctor/find?name=" + e.target.name.value,
         {
-          withCredentials: true
+          withCredentials: true,
         }
       )
       .then((response) => {
@@ -87,7 +87,9 @@ const Directory = () => {
               <label className="form-label mt-2">Search</label>
               <input name="name" type="text" className="form-control" />
 
-              <button className="btn" type="submit">Search</button>
+              <button className="mt-2 btn btn-outline-success" type="submit">
+                Enter
+              </button>
             </form>
           </div>
         </div>

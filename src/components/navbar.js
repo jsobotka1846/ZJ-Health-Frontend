@@ -43,9 +43,11 @@ const Navbar = () => {
       setLab(null);
       setCreatePrescription(null);
     } else {
-      axios.get("http://localhost:8080/api/user/role", {
+      axios
+        .get("http://localhost:8080/api/user/role", {
           withCredentials: true,
-        }).then((response) => {
+        })
+        .then((response) => {
           var role = response.data;
           if (role == "administrator") {
             setCreateDr(
@@ -131,7 +133,7 @@ const Navbar = () => {
                 </a>
                 <ul className="dropdown-menu" style={{ position: "absolute" }}>
                   <li>
-                    <a className="dropdown-item" href="#cards">
+                    <a className="dropdown-item" href="/profile">
                       Appointments
                     </a>
                   </li>
