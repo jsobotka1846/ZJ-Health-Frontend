@@ -17,6 +17,7 @@ const Appointment = () => {
     const medicationName = e.target.medicationName.value;
     const doseage = e.target.doseage.value;
     const diagDate = e.target.diagDate.value;
+    const priorCondition = e.target.priorCondition.value;
     const allergyName = e.target.allergyName.value;
     const allergyDesc = e.target.allergyDesc.value;
     const emails = { doctorEmail, date };
@@ -31,6 +32,7 @@ const Appointment = () => {
       currentTemp,
       medicationName,
       doseage,
+      priorCondition,
       diagDate,
       allergyName,
       allergyDesc,
@@ -165,7 +167,7 @@ const Appointment = () => {
                     <label className="form-label">Symptom Description</label>
                   </div>
 
-                  <div className="col-md-6 form-outline form-white mb-4">
+                  <div className="col-md-3 form-outline form-white mb-4">
                     <input
                       type="number"
                       name="currentTemp"
@@ -185,7 +187,7 @@ const Appointment = () => {
                     <label className="form-label">Current Medications</label>
                   </div>
 
-                  <div className="col-md-6 form-outline form-white mb-4">
+                  <div className="col-md-3 form-outline form-white mb-4">
                     <input
                       type="text"
                       name="doseage"
@@ -193,6 +195,16 @@ const Appointment = () => {
                       required
                     />
                     <label className="form-label">Doseage of Medication</label>
+                  </div>
+
+                  <div className="col-md-6 form-outline form-white mb-4">
+                    <input
+                      type="text"
+                      name="priorCondition"
+                      className="form-control"
+                      required
+                    />
+                    <label className="form-label">Prior Condition(s)</label>
                   </div>
 
                   <div className="col-md-6 form-outline form-white mb-4">

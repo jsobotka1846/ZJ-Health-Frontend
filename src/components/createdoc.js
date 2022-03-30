@@ -1,7 +1,30 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 const Createdoc = () => {
   const [message, setMessage] = useState();
+  const [departments, setDepartments] = useState();
+  let depts = [];
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (Cookies.get("JSESSIONID") == null) {
+      navigate("/login");
+    }
+    axios
+      .get("http://localhost:8080/api/department/list", {
+        withCredentials: true,
+      })
+      .then((response) => {
+        for (let dept of response.data) {
+          depts.push(<option value={dept.name}>{dept.name}</option>);
+        }
+
+        setDepartments(depts);
+      });
+  }, []);
 
   const submit = (e) => {
     e.preventDefault();
@@ -27,15 +50,13 @@ const Createdoc = () => {
             Invalid request, double check doctor email and department
           </h1>
         );
-      }
-      else {
+      } else {
         setMessage(
           <h1 className="bg-success" style={{ fontSize: "16px" }}>
             Set Doctor Role for {email}
           </h1>
         );
       }
-      
     });
   };
 
@@ -55,7 +76,7 @@ const Createdoc = () => {
                     Create Doctor Account
                   </h2>
                   <p className="text-white-50 mb-5">
-                    Please fill out the following docInfo
+                    Please fill out the following doctor information.
                   </p>
 
                   <div className="col-md-6 form-outline form-white mb-4">
@@ -69,12 +90,14 @@ const Createdoc = () => {
                   </div>
 
                   <div className="col-md-6 form-outline form-white mb-4">
-                    <input
+                    <select
                       type="text"
                       name="deptName"
-                      className="form-control"
+                      className="form-select"
                       required
-                    />
+                    >
+                      {departments}
+                    </select>
                     <label className="form-label">Department</label>
                   </div>
 
