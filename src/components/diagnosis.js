@@ -7,21 +7,20 @@ import React from "react";
 const Diagnosis = () => {
   const params = useParams();
 
-  const updateDiag = (id, e) => {
+  const updateDiag = (e) => {
     e.preventDefault();
     const diagnosisName = e.target.diagnosisName.value;
+    const req = {diagnosisName};
     fetch(
-      "http://localhost:8080/api/appointment/" +
-        params.appointmentId +
-        "/diagnosis",
+      "http://localhost:8080/api/appointment/update/" +params.appointmentId +"/diagnosis",
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(diagnosisName),
+        body: JSON.stringify(req),
         credentials: "include",
       }
     ).then(() => {
-      window.location.reload();
+      console.log("diag created");
     });
   };
 
