@@ -4,49 +4,52 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
 const DoctorAppt = () => {
-    const [appointments, setAppointments] = useState();
-    const navigate = useNavigate();
-    let appts = [];
+  const [appointments, setAppointments] = useState();
+  const navigate = useNavigate();
+  let appts = [];
 
-    useEffect(() => {
-        if (Cookies.get("JSESSIONID") == null) {
-          navigate("/login");
+  useEffect(() => {
+    if (Cookies.get("JSESSIONID") == null) {
+      navigate("/login");
+    }
+    axios
+      .get("http://localhost:8080/api/doctor/appointments/list", {
+        withCredentials: true,
+      })
+      .then((response) => {
+        for (let appt of response.data) {
+          appts.push(
+            <div className="card text-middle bg-primary border border-dark border-5 mb-3 col-4 mx-auto">
+              <div className="card-body">
+                <h5 className="card-title text-light">Appointment</h5>
+                <p className="card-text text-light">
+                  Patient: {appt.patient.firstName} {appt.patient.lastName}
+                </p>
+                <p className="card-text text-light">{appt.date}</p>
+
+                <a
+                  href={"/view/record/" + appt.patient.id}
+                  className="btn btn-primary border btn-outline-success text-light"
+                >
+                  Review Patient Medical Record
+                </a>
+
+                <a
+                  href={"/doctor/appointments/update/" + appt.id + "/diagnosis"}
+                  className="btn btn-primary border btn-outline-success text-light"
+                >
+                  Enter Diagnosis and Close
+                </a>
+              </div>
+            </div>
+          );
         }
-        axios
-          .get("http://localhost:8080/api/doctor/appointments/list", {
-            withCredentials: true,
-          })
-          .then((response) => {
-            for (let appt of response.data) {
-              appts.push(
-                <div className="card text-middle bg-primary border border-dark border-5 mb-3 col-4 mx-auto">
-                  <div className="card-body">
-                    <h5 className="card-title text-light">Appointment</h5>
-                    <p className="card-text text-light">
-                      Patient: {appt.patient.firstName} {appt.patient.lastName}
-                    </p>
-                    <p className="card-text text-light">{appt.date}</p>
 
-                    <a
-                      href={"/view/record/"+appt.patient.id}
-                      className="btn btn-primary border btn-outline-success text-light"
-                    >
-                      Review Patient Medical Record
-                    </a>
-                  </div>
-                </div>
-              );
-            }
-    
-            setAppointments(appts);
-        });
-    }, []);
+        setAppointments(appts);
+      });
+  }, []);
 
-
-
-
-
-    return (
+  return (
     <div className="profile">
       <div className="mt-5">
         <h1 className="text-center" style={{ color: "navy" }}>
@@ -60,8 +63,7 @@ const DoctorAppt = () => {
         <hr />
       </div>
     </div>
-        
-     );
-}
- 
+  );
+};
+
 export default DoctorAppt;
