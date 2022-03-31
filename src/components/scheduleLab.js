@@ -1,19 +1,22 @@
 const ScheduleLab = () => {
   const submit = (e) => {
-    e.preventDefault();
-    const testName = e.target.test.value;
-    const date = e.target.date.value;
-    const patientEmail = e.target.patient.value;
-    const req = { testName, date, patientEmail };
-    fetch("http://localhost:8080/api/lab/create", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(req),
-      credentials: "include",
-    }).then(() => {
-      console.log("created");
-    });
-  };
+      e.preventDefault();
+      const testName = e.target.test.value;
+      const date = e.target.date.value;
+      const patientEmail = e.target.patientEmail.value;
+      const req = {testName, patientEmail, date};
+      fetch("http://localhost:8080/api/lab/create", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(req),
+          credentials: "include",
+          
+      }).then(()=> {
+          console.log("created");
+
+      })
+  }
+
 
   return (
     <form onSubmit={submit}>
@@ -27,10 +30,13 @@ const ScheduleLab = () => {
               <div className="card-body p-5 text-center">
                 <div className="mb-md-5 mt-md-4 pb-5 row g-3">
                   <h2 className="font-weight-bold text-uppercase">Lab Form</h2>
-                  <p className="text-white-50 mb-5">
-                    Please fill out the following fields
-                  </p>
 
+                  <p className="text-white-50 mb-5">Please fill out the following fields</p>
+                  <div className="col-md-6 form-outline form-white mb-4">
+                    <input type="text" name="patientEmail" className="form-control" required/>
+                    <label className="form-label">Patient Email</label>
+                  </div>
+    
                   <div className="col-md-6 form-outline form-white mb-4">
                     {/* <input
                       type="text"
@@ -68,16 +74,6 @@ const ScheduleLab = () => {
                       required
                     />
                     <label className="form-label">Date</label>
-                  </div>
-
-                  <div className="col-md-12 form-outline form-white mb-4">
-                    <input
-                      type="text"
-                      name="patient"
-                      className="form-control"
-                      required
-                    />
-                    <label className="form-label">Patient Email</label>
                   </div>
 
                   <button
