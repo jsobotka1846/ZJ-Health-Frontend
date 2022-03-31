@@ -19,13 +19,12 @@ const Unclaimed = () => {
   };
 
   const claimAppt = (id) => {
-    axios
-      .put("http://localhost:8080/api/appointment/addDoctor/" + id, {
-        withCredentials: true,
-      })
-      .then(() => {
-        window.location.reload();
-      });
+    fetch("http://localhost:8080/api/appointment/addDoctor/" + id, {
+      method: "PUT",
+      credentials: "include",
+    }).then(() => {
+      window.location.reload();
+    });
   };
 
   useEffect(() => {
