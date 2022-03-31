@@ -11,6 +11,8 @@ import Createdoc from "./components/createdoc";
 import ScheduleLab from "./components/scheduleLab";
 import CreatePrescription from "./components/createPrescription";
 import PatientPrescriptions from "./components/patientPrescriptions";
+import DoctorAppt from "./components/doctorAppointments";
+import MedicalRecord from "./components/medicalRecord";
 function App() {
   return (
     <BrowserRouter>
@@ -28,6 +30,9 @@ function App() {
             <Route path="/lab/create" element={<ScheduleLab />} />
             <Route path="/prescription/create" element={<CreatePrescription />} />
             <Route path="/profile/prescriptions"element={<PatientPrescriptions />} />
+            <Route path="/doctor/appointments" element={<DoctorAppt />} />
+            <Route path="/view/record/:patientId" element={<MedicalRecord />} />
+            <Route path="/view/record" element={<MedicalRecord />} />
           </Routes>
         </div>
       </div>

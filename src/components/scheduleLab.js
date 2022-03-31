@@ -3,7 +3,8 @@ const ScheduleLab = () => {
       e.preventDefault();
       const testName = e.target.test.value;
       const date = e.target.date.value;
-      const req = {testName, date};
+      const patientEmail = e.target.patientEmail.value;
+      const req = {testName, patientEmail, date};
       fetch("http://localhost:8080/api/lab/create", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -30,6 +31,10 @@ const ScheduleLab = () => {
     
                   <h2 className="font-weight-bold text-uppercase">Lab Form</h2>
                   <p className="text-white-50 mb-5">Please fill out the following fields</p>
+                  <div className="col-md-6 form-outline form-white mb-4">
+                    <input type="text" name="patientEmail" className="form-control" required/>
+                    <label className="form-label">Patient Email</label>
+                  </div>
     
                   <div className="col-md-6 form-outline form-white mb-4">
                     <input type="text" name="test" className="form-control" required/>

@@ -7,7 +7,9 @@ const Navbar = () => {
   const [status, setStatus] = useState();
   const [signup, setSignup] = useState();
   const [profile, setProfile] = useState();
+  const [record, setRecord] = useState();
   const [createDr, setCreateDr] = useState();
+  const [drAppt, setDrAppt] = useState();
   const [lab, setLab] = useState();
   const [createPrescription, setCreatePrescription] = useState();
   const navigate = useNavigate();
@@ -42,6 +44,8 @@ const Navbar = () => {
       setCreateDr(null);
       setLab(null);
       setCreatePrescription(null);
+      setDrAppt(null);
+      setRecord(null);
     } else {
       axios
         .get("http://localhost:8080/api/user/role", {
@@ -60,6 +64,16 @@ const Navbar = () => {
               </a>
             );
           } else if (role == "doctor") {
+            setDrAppt(
+              <a
+                className="item nav-link"
+                href="/doctor/appointments"
+                style={{ color: "white" }}
+              >
+                Doctor Appointments
+              </a>
+            );
+
             setLab(
               <a
                 className="item nav-link"
@@ -79,6 +93,16 @@ const Navbar = () => {
               </a>
             );
           }
+
+          setRecord(
+            <a
+              className="item nav-link"
+              href="/view/record"
+              style={{ color: "white" }}
+            >
+              View Record
+            </a>
+          );
 
           setStatus(
             <button
@@ -147,9 +171,14 @@ const Navbar = () => {
                       Lab Testing
                     </a>
                   </li>
+                  <li>
+                    <a className="dropdown-item" href="/view/record">
+                      View Record
+                    </a>
+                  </li>
                 </ul>
               </div>
-
+              {drAppt}
               {createDr}
               {lab}
               {createPrescription}
