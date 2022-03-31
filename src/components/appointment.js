@@ -71,7 +71,6 @@ const Appointment = () => {
                       type="email"
                       name="doctorEmail"
                       className="form-control"
-                      required
                     />
                     <label className="form-label">
                       Requested Doctor's Email

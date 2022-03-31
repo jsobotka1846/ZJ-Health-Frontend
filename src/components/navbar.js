@@ -9,6 +9,7 @@ const Navbar = () => {
   const [profile, setProfile] = useState();
   const [record, setRecord] = useState();
   const [createDr, setCreateDr] = useState();
+  const [viewUnclaimedAppt, setViewUnclaimedAppt] = useState();
   const [drAppt, setDrAppt] = useState();
   const [lab, setLab] = useState();
   const [createPrescription, setCreatePrescription] = useState();
@@ -81,6 +82,16 @@ const Navbar = () => {
                 style={{ color: "white" }}
               >
                 Schedule Lab
+              </a>
+            );
+
+            setViewUnclaimedAppt(
+              <a
+                className="item nav-link"
+                href="/profile/viewUnclaimed"
+                style={{ color: "white" }}
+              >
+                View Unclaimed Appointments
               </a>
             );
             setCreatePrescription(
@@ -182,6 +193,7 @@ const Navbar = () => {
               {createDr}
               {lab}
               {createPrescription}
+              {viewUnclaimedAppt}
             </div>
           </div>
           {status}

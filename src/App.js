@@ -11,6 +11,7 @@ import Createdoc from "./components/createdoc";
 import ScheduleLab from "./components/scheduleLab";
 import CreatePrescription from "./components/createPrescription";
 import PatientPrescriptions from "./components/patientPrescriptions";
+import Unclaimed from "./components/Unclaimed";
 import DoctorAppt from "./components/doctorAppointments";
 import MedicalRecord from "./components/medicalRecord";
 function App() {
@@ -28,11 +29,13 @@ function App() {
             <Route path="/appointment" element={<Appointment />} />
             <Route path="/admin/add" element={<Createdoc />} />
             <Route path="/lab/create" element={<ScheduleLab />} />
+            <Route path="/profile/viewUnclaimed" element={<Unclaimed />} />
             <Route path="/prescription/create" element={<CreatePrescription />} />
             <Route path="/profile/prescriptions"element={<PatientPrescriptions />} />
             <Route path="/doctor/appointments" element={<DoctorAppt />} />
             <Route path="/view/record/:patientId" element={<MedicalRecord />} />
             <Route path="/view/record" element={<MedicalRecord />} />
+
           </Routes>
         </div>
       </div>

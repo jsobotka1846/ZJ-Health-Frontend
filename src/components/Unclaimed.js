@@ -2,7 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-const Profile = () => {
+import React from "react";
+const Unclaimed = () => {
   const [appointments, setAppointments] = useState();
   let appts = [];
   const navigate = useNavigate();
@@ -17,12 +18,21 @@ const Profile = () => {
       });
   };
 
+  const claimAppt = (id) => {
+    fetch("http://localhost:8080/api/appointment/addDoctor/" + id, {
+      method: "PUT",
+      credentials: "include",
+    }).then(() => {
+      window.location.reload();
+    });
+  };
+
   useEffect(() => {
     if (Cookies.get("JSESSIONID") == null) {
       navigate("/login");
     }
     axios
-      .get("http://localhost:8080/api/appointment/user/appointments", {
+      .get("http://localhost:8080/api/appointment/list/unassigned", {
         withCredentials: true,
       })
       .then((response) => {
@@ -32,7 +42,8 @@ const Profile = () => {
               <div className="card-body">
                 <h5 className="card-title text-light">Appointment</h5>
                 <p className="card-text text-light">
-                  Dr. {appt.doctor.firstName} {appt.doctor.lastName}
+                  {/* {appt.patient.firstName} {appt.patient.lastName} */}
+                  No Doctor Assigned
                 </p>
                 <p className="card-text text-light">{appt.date}</p>
 
@@ -43,10 +54,10 @@ const Profile = () => {
                   Cancel Appointment
                 </button>
                 <a
-                  href="#"
                   className="btn btn-primary border btn-outline-success text-light"
+                  onClick={() => claimAppt(appt.id)}
                 >
-                  Review Appointment
+                  Claim Appointment
                 </a>
               </div>
             </div>
@@ -57,25 +68,13 @@ const Profile = () => {
   }, []);
 
   return (
-    <div className="profile">
-      <div className="mt-5">
-        <h1 className="text-center" style={{ color: "navy" }}>
-          Welcome
-        </h1>
-        <br />
-        <h2 className="text-center" style={{ color: "navy" }}>
-          Current Appointments
-        </h2>
-        <p className="text-center">
-          <a href="/appointment" className="btn btn-outline-success">
-            Create New Apppointment
-          </a>
-        </p>
-        <hr />
-      </div>
-      {appointments}
-    </div>
+    <React.Fragment>
+      <h2 className="text-center mt-5" style={{ color: "navy" }}>
+        Unassigned Appointments
+      </h2>
+      <hr />
+      <div className="mt-3">{appointments}</div>
+    </React.Fragment>
   );
 };
-
-export default Profile;
+export default Unclaimed;
