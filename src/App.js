@@ -11,6 +11,8 @@ import Createdoc from "./components/createdoc";
 import ScheduleLab from "./components/scheduleLab";
 import CreatePrescription from "./components/createPrescription";
 import PatientPrescriptions from "./components/patientPrescriptions";
+import unclaimedAppt from "./components/Unclaimed";
+import Unclaimed from "./components/Unclaimed";
 function App() {
   return (
     <BrowserRouter>
@@ -26,8 +28,15 @@ function App() {
             <Route path="/appointment" element={<Appointment />} />
             <Route path="/admin/add" element={<Createdoc />} />
             <Route path="/lab/create" element={<ScheduleLab />} />
-            <Route path="/prescription/create" element={<CreatePrescription />} />
-            <Route path="/profile/prescriptions"element={<PatientPrescriptions />} />
+            <Route
+              path="/prescription/create"
+              element={<CreatePrescription />}
+            />
+            <Route
+              path="/profile/prescriptions"
+              element={<PatientPrescriptions />}
+            />
+            <Route path="/profile/viewUnclaimed" element={<Unclaimed />} />
           </Routes>
         </div>
       </div>
