@@ -5,8 +5,58 @@ import { useNavigate } from "react-router-dom";
 
 const DoctorAppt = () => {
   const [appointments, setAppointments] = useState();
+  const [viewIntake, setViewIntake] = useState();
   const navigate = useNavigate();
   let appts = [];
+
+
+  const viewForm = (intake) => {
+    setViewIntake(
+      <div className="intake" style={{top: window.scrollY+100}}>
+        <button onClick={() => setViewIntake(null)} className="btn btn-primary">
+          X
+        </button>
+        <h2>Patient Intake Form</h2>
+        <h5>Emergency Contact Information</h5>
+        <p>
+        First Name: {intake.emergencyFirstName}
+        <br />
+        Last Name: {intake.emergencyFirstName}
+        <br />
+        Phone Number: {intake.emergencyNum}
+        <br />
+        Relation: {intake.emergencyRelation}
+        </p>
+        <h5>Current Health</h5>
+        <p>
+          Symptoms: {intake.primarySymptoms}
+          <br />
+          Symptom Onset Date: {intake.symptomOnset}
+          <br />
+          Symptom Description: {intake.symptomDesc}
+          <br />
+          Current Temperature: {intake.currentTemp}
+          <br />
+        </p>
+        <h5>Current Medication</h5>
+        <p>
+          Medication Name: {intake.medicationName}
+          <br />
+          Doseage: {intake.doseage}
+        </p>
+        <h5>Health History</h5>
+        <p>
+          Prior Condition: {intake.priorCondition}
+          <br />
+          Diagnosis Date: {intake.diagDate}
+          <br />
+          Allergy Names: {intake.allergyName}
+          <br />
+          Allergy Descriptions: {intake.allergyDesc}
+        </p>
+      </div>
+    )
+  }
 
   useEffect(() => {
     if (Cookies.get("JSESSIONID") == null) {
@@ -33,12 +83,24 @@ const DoctorAppt = () => {
                 >
                   Review Patient Medical Record
                 </a>
-
+                <button
+                  onClick={() => viewForm(appt.intake)}
+                  className="btn btn-primary border btn-outline-success text-light"
+                >
+                  View Intake Form
+                </button>
+                
                 <a
                   href={"/doctor/appointments/update/" + appt.id + "/diagnosis"}
                   className="btn btn-primary border btn-outline-success text-light"
                 >
                   Enter Diagnosis and Close
+                </a>
+                <a
+                  href={"/doctor/appointments/update/" + appt.id + "/treatment"}
+                  className="btn btn-primary border btn-outline-success text-light"
+                >
+                  Enter Treatment
                 </a>
               </div>
             </div>
@@ -52,6 +114,10 @@ const DoctorAppt = () => {
   return (
     <div className="profile">
       <div className="mt-5">
+      <div className="container">
+          {viewIntake}
+
+        </div>
         <h1 className="text-center" style={{ color: "navy" }}>
           Welcome
         </h1>
@@ -60,6 +126,7 @@ const DoctorAppt = () => {
           Scheduled Patients
         </h2>
         {appointments}
+        
         <hr />
       </div>
     </div>

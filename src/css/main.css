@@ -23,3 +23,16 @@
   margin-right: 10px;
 }
 
+.intake {
+  position: absolute;
+  background-color: lightgray;
+  margin-left: 25%;
+  z-index: 1;
+  word-wrap: break-word;
+  width: 500px;
+  
+}
+
+.intake button {
+  float: right;
+}

@@ -15,6 +15,7 @@ import Unclaimed from "./components/Unclaimed";
 import DoctorAppt from "./components/doctorAppointments";
 import MedicalRecord from "./components/medicalRecord";
 import Diagnosis from "./components/diagnosis";
+import Treatment from "./components/treatment";
 function App() {
   return (
     <BrowserRouter>
@@ -43,6 +44,10 @@ function App() {
             <Route
               path="/doctor/appointments/update/:appointmentId/diagnosis/"
               element={<Diagnosis />}
+            />
+            <Route
+              path="/doctor/appointments/update/:appointmentId/treatment/"
+              element={<Treatment />}
             />
             <Route path="/view/record/:patientId" element={<MedicalRecord />} />
             <Route path="/view/record" element={<MedicalRecord />} />
