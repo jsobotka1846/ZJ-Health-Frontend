@@ -9,23 +9,25 @@ const DoctorAppt = () => {
   const navigate = useNavigate();
   let appts = [];
 
-
   const viewForm = (intake) => {
     setViewIntake(
-      <div className="intake" style={{top: window.scrollY+100}}>
-        <button onClick={() => setViewIntake(null)} className="btn btn-primary close">
+      <div className="intake" style={{ top: window.scrollY + 100, right: 100 }}>
+        <button
+          onClick={() => setViewIntake(null)}
+          className="btn btn-primary close"
+        >
           X
         </button>
         <h2>Patient Intake Form</h2>
         <h5>Emergency Contact Information</h5>
         <p>
-        First Name: {intake.emergencyFirstName}
-        <br />
-        Last Name: {intake.emergencyFirstName}
-        <br />
-        Phone Number: {intake.emergencyNum}
-        <br />
-        Relation: {intake.emergencyRelation}
+          First Name: {intake.emergencyFirstName}
+          <br />
+          Last Name: {intake.emergencyFirstName}
+          <br />
+          Phone Number: {intake.emergencyNum}
+          <br />
+          Relation: {intake.emergencyRelation}
         </p>
         <h5>Current Health</h5>
         <p>
@@ -55,8 +57,8 @@ const DoctorAppt = () => {
           Allergy Descriptions: {intake.allergyDesc}
         </p>
       </div>
-    )
-  }
+    );
+  };
 
   useEffect(() => {
     if (Cookies.get("JSESSIONID") == null) {
@@ -89,7 +91,7 @@ const DoctorAppt = () => {
                 >
                   View Intake Form
                 </button>
-                
+
                 <a
                   href={"/doctor/appointments/update/" + appt.id + "/diagnosis"}
                   className="btn btn-primary border btn-outline-success text-light"
@@ -114,10 +116,7 @@ const DoctorAppt = () => {
   return (
     <div className="profile">
       <div className="mt-5">
-      <div className="container">
-          {viewIntake}
-
-        </div>
+        <div className="container">{viewIntake}</div>
         <h1 className="text-center" style={{ color: "navy" }}>
           Welcome
         </h1>
@@ -126,7 +125,7 @@ const DoctorAppt = () => {
           Scheduled Patients
         </h2>
         {appointments}
-        
+
         <hr />
       </div>
     </div>

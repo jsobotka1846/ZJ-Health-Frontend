@@ -8,62 +8,49 @@ const Profile = () => {
   let appts = [];
   const navigate = useNavigate();
 
-
   const submitReview = (e, id) => {
     e.preventDefault();
     const rating = e.target.rating.value;
     const review = e.target.review.value;
-    const req = {rating, review};
-    
-    fetch(
-      "http://localhost:8080/api/appointment/review/" + id, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(req),
-        credentials: "include",
-      }
-    ).then(() => {
+    const req = { rating, review };
+
+    fetch("http://localhost:8080/api/appointment/review/" + id, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(req),
+      credentials: "include",
+    }).then(() => {
       setForm(null);
       window.location.reload();
     });
-  }
-
+  };
 
   const viewForm = (id) => {
     setForm(
       <div className="container">
-        <div className="review" style={{top: window.scrollY+100}}>
-          <button onClick={() => setForm(null)} className="btn btn-primary close">
+        <div
+          className="review"
+          style={{ top: window.scrollY + 280, right: 100 }}
+        >
+          <button
+            onClick={() => setForm(null)}
+            className="btn btn-primary close"
+          >
             X
           </button>
           <h5>Appointment Review Form</h5>
           <hr />
           <form onSubmit={(e) => submitReview(e, id)}>
-            <input
-              type="number"
-              name="rating"
-              placeholder="Rating"
-              required
-            />
+            <input type="number" name="rating" placeholder="Rating" required />
             <br />
-            <input
-              type="text"
-              name="review"
-              placeholder="Review"
-              required
-            />
+            <input type="text" name="review" placeholder="Review" required />
             <br />
-            <input
-              type="submit"
-              value={"Submit"}
-              className="btn btn-primary"
-            />
-
+            <input type="submit" value={"Submit"} className="btn btn-primary" />
           </form>
         </div>
       </div>
-    )
-  }
+    );
+  };
 
   const delAppt = (id) => {
     axios
@@ -101,14 +88,14 @@ const Profile = () => {
                   >
                     Cancel Appointment
                   </button>
-                  {appt.review == null &&
+                  {appt.review == null && (
                     <button
-                    onClick={() => viewForm(appt.id)}
+                      onClick={() => viewForm(appt.id)}
                       className="btn btn-primary border btn-outline-success text-light"
                     >
-                    Review Appointment
-                  </button>
-                  }
+                      Review Appointment
+                    </button>
+                  )}
                 </div>
               </div>
             );

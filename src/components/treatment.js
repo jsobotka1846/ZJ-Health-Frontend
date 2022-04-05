@@ -1,33 +1,31 @@
-
 import { useNavigate, useParams } from "react-router-dom";
 
 const Treatment = () => {
-    const params = useParams();
-    const navigate = useNavigate();
+  const params = useParams();
+  const navigate = useNavigate();
 
-    const updateTreatment = (e) => {
-        e.preventDefault();
-        const treatmentName = e.target.treatmentName.value;
-        const treatmentReason = e.target.treatmentReason.value;
-        const req = {treatmentName, treatmentReason};
-        fetch(
-            "http://localhost:8080/api/appointment/update/" +params.appointmentId +"/treatment",
-            {
-              method: "PUT",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(req),
-              credentials: "include",
-            }
-          ).then(() => {
-            navigate("/doctor/appointments")
-          });
+  const updateTreatment = (e) => {
+    e.preventDefault();
+    const treatmentName = e.target.treatmentName.value;
+    const treatmentReason = e.target.treatmentReason.value;
+    const req = { treatmentName, treatmentReason };
+    fetch(
+      "http://localhost:8080/api/appointment/update/" +
+        params.appointmentId +
+        "/treatment",
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(req),
+        credentials: "include",
+      }
+    ).then(() => {
+      navigate("/doctor/appointments");
+    });
+  };
 
-    };
-
-
-
-    return (
-        <form onSubmit={updateTreatment}>
+  return (
+    <form onSubmit={updateTreatment}>
       <div className="form-group mt-5 row">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -65,7 +63,7 @@ const Treatment = () => {
                     className="btn btn-outline-light btn-lg"
                     type="submit"
                   >
-                    Close Appointment
+                    Update Appointment
                   </button>
                 </div>
               </div>
@@ -74,9 +72,7 @@ const Treatment = () => {
         </div>
       </div>
     </form>
+  );
+};
 
-
-     );
-}
- 
 export default Treatment;
