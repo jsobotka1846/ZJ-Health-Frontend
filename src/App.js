@@ -29,7 +29,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/directory" element={<Directory />} />
             <Route path="/appointment" element={<Appointment />} />
-            <Route path="/admin/add" element={<Createdoc />} />
+            <Route path="/admin/edit" element={<Createdoc />} />
             <Route path="/lab/create" element={<ScheduleLab />} />
             <Route path="/profile/viewUnclaimed" element={<Unclaimed />} />
             <Route

@@ -58,10 +58,10 @@ const Navbar = () => {
             setCreateDr(
               <a
                 className="item nav-link"
-                href="/admin/add"
+                href="/admin/edit"
                 style={{ color: "white" }}
               >
-                Add Doctor
+                Add/Remove Doctor
               </a>
             );
           } else if (role == "doctor") {
