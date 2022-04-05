@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Appointment = () => {
   let navigate = useNavigate();
+  const [message, setMessage] = useState();
   const submit = (e) => {
     e.preventDefault();
     const doctorEmail = e.target.doctorEmail.value;
@@ -43,8 +45,18 @@ const Appointment = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(req),
       credentials: "include",
-    }).then(() => {
-      navigate("/profile");
+    }).then((response) => {
+      if (response.status==200) {
+        navigate("/profile");
+      }
+      else if (response.status==409) {
+        setMessage(
+          <h1 className="bg-danger" style={{ fontSize: "16px" }}>
+            Appoint Time Conflict, Please Choose Another Time
+          </h1>
+        );
+      }
+      
     });
   };
 
@@ -59,6 +71,7 @@ const Appointment = () => {
             >
               <div className="card-body p-5 text-center">
                 <div className="mb-md-5 mt-md-4 pb-5 row g-3">
+                  {message}
                   <h2 className="font-weight-bold text-uppercase">
                     Request Appointment
                   </h2>

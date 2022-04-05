@@ -85,42 +85,34 @@ const Profile = () => {
       })
       .then((response) => {
         for (let appt of response.data) {
-          // let letReview = null;
-          // if (appt.diagnosis != null) {
-          //   letReview = 
-          //     <button
-          //     onClick={() => viewForm(appt.id)}
-          //       className="btn btn-primary border btn-outline-success text-light"
-          //     >
-          //     Review Appointment
-          //   </button>;
-          // }
-          appts.push(
-            <div className="card text-middle bg-primary border border-dark border-5 mb-3 col-4 mx-auto">
-              <div className="card-body">
-                <h5 className="card-title text-light">Appointment</h5>
-                <p className="card-text text-light">
-                  Dr. {appt.doctor.firstName} {appt.doctor.lastName}
-                </p>
-                <p className="card-text text-light">{appt.date}</p>
+          if (appt.doctor != null) {
+            appts.push(
+              <div className="card text-middle bg-primary border border-dark border-5 mb-3 col-4 mx-auto">
+                <div className="card-body">
+                  <h5 className="card-title text-light">Appointment</h5>
+                  <p className="card-text text-light">
+                    Dr. {appt.doctor.firstName} {appt.doctor.lastName}
+                  </p>
+                  <p className="card-text text-light">{appt.date}</p>
 
-                <button
-                  className="btn btn-primary border btn-outline-danger text-light"
-                  onClick={() => delAppt(appt.id)}
-                >
-                  Cancel Appointment
-                </button>
-                {appt.review == null &&
                   <button
-                  onClick={() => viewForm(appt.id)}
-                    className="btn btn-primary border btn-outline-success text-light"
+                    className="btn btn-primary border btn-outline-danger text-light"
+                    onClick={() => delAppt(appt.id)}
                   >
-                  Review Appointment
-                </button>
-                }
+                    Cancel Appointment
+                  </button>
+                  {appt.review == null &&
+                    <button
+                    onClick={() => viewForm(appt.id)}
+                      className="btn btn-primary border btn-outline-success text-light"
+                    >
+                    Review Appointment
+                  </button>
+                  }
+                </div>
               </div>
-            </div>
-          );
+            );
+          }
         }
         setAppointments(appts);
       });
