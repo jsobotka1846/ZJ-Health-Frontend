@@ -4,8 +4,66 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 const Profile = () => {
   const [appointments, setAppointments] = useState();
+  const [form, setForm] = useState();
   let appts = [];
   const navigate = useNavigate();
+
+
+  const submitReview = (e, id) => {
+    e.preventDefault();
+    const rating = e.target.rating.value;
+    const review = e.target.review.value;
+    const req = {rating, review};
+    
+    fetch(
+      "http://localhost:8080/api/appointment/review/" + id, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(req),
+        credentials: "include",
+      }
+    ).then(() => {
+      setForm(null);
+      window.location.reload();
+    });
+  }
+
+
+  const viewForm = (id) => {
+    setForm(
+      <div className="container">
+        <div className="review" style={{top: window.scrollY+100}}>
+          <button onClick={() => setForm(null)} className="btn btn-primary close">
+            X
+          </button>
+          <h5>Appointment Review Form</h5>
+          <hr />
+          <form onSubmit={(e) => submitReview(e, id)}>
+            <input
+              type="number"
+              name="rating"
+              placeholder="Rating"
+              required
+            />
+            <br />
+            <input
+              type="text"
+              name="review"
+              placeholder="Review"
+              required
+            />
+            <br />
+            <input
+              type="submit"
+              value={"Submit"}
+              className="btn btn-primary"
+            />
+
+          </form>
+        </div>
+      </div>
+    )
+  }
 
   const delAppt = (id) => {
     axios
@@ -27,6 +85,16 @@ const Profile = () => {
       })
       .then((response) => {
         for (let appt of response.data) {
+          // let letReview = null;
+          // if (appt.diagnosis != null) {
+          //   letReview = 
+          //     <button
+          //     onClick={() => viewForm(appt.id)}
+          //       className="btn btn-primary border btn-outline-success text-light"
+          //     >
+          //     Review Appointment
+          //   </button>;
+          // }
           appts.push(
             <div className="card text-middle bg-primary border border-dark border-5 mb-3 col-4 mx-auto">
               <div className="card-body">
@@ -42,12 +110,14 @@ const Profile = () => {
                 >
                   Cancel Appointment
                 </button>
-                <a
-                  href="#"
-                  className="btn btn-primary border btn-outline-success text-light"
-                >
+                {appt.review == null &&
+                  <button
+                  onClick={() => viewForm(appt.id)}
+                    className="btn btn-primary border btn-outline-success text-light"
+                  >
                   Review Appointment
-                </a>
+                </button>
+                }
               </div>
             </div>
           );
@@ -62,6 +132,7 @@ const Profile = () => {
         <h1 className="text-center" style={{ color: "navy" }}>
           Welcome
         </h1>
+        {form}
         <br />
         <h2 className="text-center" style={{ color: "navy" }}>
           Current Appointments

@@ -33,6 +33,16 @@
   
 }
 
-.intake button {
+.close {
   float: right;
+}
+
+.review {
+  position: absolute;
+  background-color: lightgray;
+  margin-left: 25%;
+  z-index: 1;
+  word-wrap: break-word;
+  width: 500px;
+  
 }
