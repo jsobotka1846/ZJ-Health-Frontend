@@ -7,6 +7,7 @@ const Navbar = () => {
   const [status, setStatus] = useState();
   const [signup, setSignup] = useState();
   const [profile, setProfile] = useState();
+  const [viewLabs, setViewLabs] = useState();
   const [record, setRecord] = useState();
   const [createDr, setCreateDr] = useState();
   const [viewUnclaimedAppt, setViewUnclaimedAppt] = useState();
@@ -44,6 +45,7 @@ const Navbar = () => {
       setProfile(null);
       setCreateDr(null);
       setLab(null);
+      setViewLabs(null);
       setCreatePrescription(null);
       setDrAppt(null);
       setRecord(null);
@@ -83,6 +85,17 @@ const Navbar = () => {
               >
                 Schedule Lab
               </a>
+            );
+
+            setViewLabs(
+              <a
+                className="item nav-link"
+                href="/view/labs"
+                style={{ color: "white" }}
+              >
+                Update Labs
+              </a>
+
             );
 
             setViewUnclaimedAppt(
@@ -178,11 +191,6 @@ const Navbar = () => {
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#cards">
-                      Lab Testing
-                    </a>
-                  </li>
-                  <li>
                     <a className="dropdown-item" href="/view/record">
                       View Record
                     </a>
@@ -192,6 +200,7 @@ const Navbar = () => {
               {drAppt}
               {createDr}
               {lab}
+              {viewLabs}
               {createPrescription}
               {viewUnclaimedAppt}
             </div>

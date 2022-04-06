@@ -8,11 +8,11 @@ const Home = () => {
                 <h1 className="text-center" style={{color: "navy"}}>Welcome to ZJ Health!</h1>
                 <h2 className="text-center" style={{color: "navy"}}>Our talanted staff are here to ease the stress of healthcare</h2>
             </div>
-            <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
+            <div id="carousel" className="carousel slide" data-bs-ride="carousel">
                 <div className="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" className="active"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" ></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" ></button>
                 </div>
                 <div className="carousel-inner">
                     <div className="carousel-item active">
@@ -25,13 +25,11 @@ const Home = () => {
                         <img src={require('../pics/doc3.png')} className="d-block w-100" alt="..."/>
                     </div>
                 </div>
-                <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span className="visually-hidden">Previous</span>
+                <button className="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                    <span className="carousel-control-prev-icon"></span>
                 </button>
-                <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span className="visually-hidden">Next</span>
+                <button className="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                    <span className="carousel-control-next-icon"></span>
                 </button>
             </div>
             <br /><br />
@@ -75,7 +73,7 @@ const Home = () => {
                             </div>
                             <div className="row px-2 no-gutters">
                                 <div className="col-12">
-                                    <p>ZJ Health conveniently allows patients to recieve their perscription authorization securely through an emailed PDF document </p>
+                                    <p>ZJ Health conveniently allows patients to recieve their prescription authorization securely through a PDF document. </p>
                                 </div>
                             </div>
                         </div>

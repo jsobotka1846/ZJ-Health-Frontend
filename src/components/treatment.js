@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-
+import axios from "axios";
+import Cookies from "js-cookie";
 const Treatment = () => {
   const params = useParams();
   const navigate = useNavigate();
@@ -23,6 +25,22 @@ const Treatment = () => {
       navigate("/doctor/appointments");
     });
   };
+
+  useEffect(() => {
+    if (Cookies.get("JSESSIONID") == null) {
+      navigate("/login");
+    }
+    else {
+        axios.get("http://localhost:8080/api/user/role", {
+            withCredentials: true
+        }).then((response) => {
+            let role=response.data;
+            if (role!="doctor") {
+                navigate("/");
+            }
+        })
+    }
+    }, [])
 
   return (
     <form onSubmit={updateTreatment}>

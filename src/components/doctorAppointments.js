@@ -64,6 +64,16 @@ const DoctorAppt = () => {
     if (Cookies.get("JSESSIONID") == null) {
       navigate("/login");
     }
+    else {
+      axios.get("http://localhost:8080/api/user/role", {
+          withCredentials: true
+      }).then((response) => {
+          let role=response.data;
+          if (role!="doctor") {
+              navigate("/");
+          }
+      })
+    }
     axios
       .get("http://localhost:8080/api/doctor/appointments/list", {
         withCredentials: true,

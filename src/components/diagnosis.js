@@ -1,9 +1,12 @@
 import { useParams } from "react-router-dom";
 import React from "react";
-
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Cookies from "js-cookie";
 const Diagnosis = () => {
   const params = useParams();
-
+  const navigate = useNavigate();
   const updateDiag = (e) => {
     e.preventDefault();
     const diagnosisName = e.target.diagnosisName.value;
@@ -19,6 +22,22 @@ const Diagnosis = () => {
       console.log("diag created");
     });
   };
+
+  useEffect(() => {
+    if (Cookies.get("JSESSIONID") == null) {
+      navigate("/login");
+    }
+    else {
+        axios.get("http://localhost:8080/api/user/role", {
+            withCredentials: true
+        }).then((response) => {
+            let role=response.data;
+            if (role!="doctor") {
+                navigate("/");
+            }
+        })
+    }
+    }, [])
 
   return (
     <form onSubmit={updateDiag}>

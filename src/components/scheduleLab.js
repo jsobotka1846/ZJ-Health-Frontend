@@ -1,6 +1,11 @@
 import { useState } from "react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Cookies from "js-cookie";
 const ScheduleLab = () => {
   const [message, setMessage] = useState();
+  const navigate = useNavigate();
   const submit = (e) => {
     e.preventDefault();
     const testName = e.target.test.value;
@@ -30,6 +35,22 @@ const ScheduleLab = () => {
       console.log("created");
     });
   };
+
+  useEffect(() => {
+    if (Cookies.get("JSESSIONID") == null) {
+      navigate("/login");
+    }
+    else {
+        axios.get("http://localhost:8080/api/user/role", {
+            withCredentials: true
+        }).then((response) => {
+            let role=response.data;
+            if (role!="doctor") {
+                navigate("/");
+            }
+        })
+    }
+    }, [])
 
   return (
     <form onSubmit={submit}>
