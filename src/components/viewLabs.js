@@ -31,7 +31,7 @@ const ViewLabs = () => {
             <div className="container">
                 <div
                 className="review"
-                style={{ top: window.scrollY + 280, right: 100 }}
+                style={{ top: window.scrollY + 150, right: 20 }}
                 >
                 <button
                     onClick={() => setViewForm(null)}
@@ -77,7 +77,11 @@ const ViewLabs = () => {
                 <div className="card text-middle bg-primary border border-dark border-5 mb-3 col-4 mx-auto">
                 <div className="card-body">
                 <h5 className="card-title text-light">Lab</h5>
-                <p className="card-text text-light">Date Scheduled: {lab.date}</p>
+                <p className="card-text text-light">
+                    Date Scheduled: {lab.date}
+                    <br />
+                    Patient: {lab.patientFName} {lab.patientLName}
+                </p>
 
                 
                 {lab.result == null && (

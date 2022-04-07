@@ -85,16 +85,15 @@ const Profile = () => {
                     {appt.date}
                     
                   </p>
-        
-                  
-
-
-                  <button
-                    className="btn btn-primary border btn-outline-danger text-light"
-                    onClick={() => delAppt(appt.id)}
-                  >
-                    Cancel Appointment
-                  </button>
+                  {appt.diagnosis == null && (
+                    <button
+                      className="btn btn-primary border btn-outline-danger text-light"
+                      onClick={() => delAppt(appt.id)}
+                    >
+                      Cancel Appointment
+                    </button>
+                  )
+                  }
                   {appt.review == null && (
                     <button
                       onClick={() => viewForm(appt.id)}
@@ -121,7 +120,7 @@ const Profile = () => {
         {form}
         <br />
         <h2 className="text-center" style={{ color: "navy" }}>
-          Current Appointments
+          Patient Appointments
         </h2>
         <p className="text-center">
           <a href="/appointment" className="btn btn-outline-success">
