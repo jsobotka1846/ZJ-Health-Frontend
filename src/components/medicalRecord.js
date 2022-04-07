@@ -17,7 +17,7 @@ const MedicalRecord = () => {
             diagnoses.push(
                 <div className="container">
                     <h4>{diag.diagnosisName}</h4>
-                    Appointment ID: {diag.appointment.id}
+                    Date of Appointment: {diag.appointment.date}
 
                 </div>
             );
@@ -28,7 +28,7 @@ const MedicalRecord = () => {
                     <h4>{treatment.treatmentName}</h4>
                     {treatment.treatmentReason}
                      <br />
-                    Appointment Id: {treatment.appointment.id}
+                    Date of Appointment: {treatment.appointment.date}
 
                 </div>
             );
