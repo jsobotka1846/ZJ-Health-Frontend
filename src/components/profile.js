@@ -79,8 +79,15 @@ const Profile = () => {
                   <h5 className="card-title text-light">Appointment</h5>
                   <p className="card-text text-light">
                     Dr. {appt.doctor.firstName} {appt.doctor.lastName}
+                    <br />
+                    Type: {appt.type}
+                    <br />
+                    {appt.date}
+                    
                   </p>
-                  <p className="card-text text-light">{appt.date}</p>
+        
+                  
+
 
                   <button
                     className="btn btn-primary border btn-outline-danger text-light"

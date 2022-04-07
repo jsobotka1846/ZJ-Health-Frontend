@@ -7,6 +7,7 @@ const Appointment = () => {
   const submit = (e) => {
     e.preventDefault();
     const doctorEmail = e.target.doctorEmail.value;
+    const type = e.target.type.value;
     const date = e.target.date.value;
     const emergencyFirstName = e.target.emergencyFirstName.value;
     const emergencyLastName = e.target.emergencyLastName.value;
@@ -22,7 +23,7 @@ const Appointment = () => {
     const priorCondition = e.target.priorCondition.value;
     const allergyName = e.target.allergyName.value;
     const allergyDesc = e.target.allergyDesc.value;
-    const emails = { doctorEmail, date };
+    const emails = { doctorEmail, type, date };
     const intake = {
       emergencyFirstName,
       emergencyLastName,
@@ -89,6 +90,20 @@ const Appointment = () => {
                       Requested Doctor's Email
                     </label>
                   </div>
+
+                  <div className="col-md-6 form-outline form-white mb-4">
+                      <select
+                        type="text"
+                        name="type"
+                        className="form-select"
+                        required
+                      >
+                        <option value="In Person">In Person</option>
+                        <option value="Telehealth">Telehealth</option>
+                        
+                      </select>
+                      <label className="form-label">Type of Appointment</label>
+                    </div>
 
                   <div className="col-md-6 form-outline form-white mb-4">
                     <input

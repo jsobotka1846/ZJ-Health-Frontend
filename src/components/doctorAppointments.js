@@ -86,8 +86,11 @@ const DoctorAppt = () => {
                 <h5 className="card-title text-light">Appointment</h5>
                 <p className="card-text text-light">
                   Patient: {appt.patient.firstName} {appt.patient.lastName}
+                  <br />
+                  Type: {appt.type}
+                  <br />
+                  {appt.date}
                 </p>
-                <p className="card-text text-light">{appt.date}</p>
 
                 <a
                   href={"/view/record/" + appt.patient.id}
