@@ -10,10 +10,11 @@ const Login = () => {
     const password = e.target.password.value;
     const credentials = { email, password };
 
-    fetch("https://zjhealth.herokuapp.com/api/user/login", {
+    fetch("http://localhost:8080/api/user/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(credentials),
+      credentials: "include",
     }).then((response) => {
       if (response.status !== 200) {
         setMessage(
@@ -23,9 +24,7 @@ const Login = () => {
         );
         e.target.password.value = "";
       } else {
-        response.json().then((data) => {
           navigate("/profile");
-        });
       }
     });
   };
