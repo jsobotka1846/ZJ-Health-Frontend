@@ -11,7 +11,7 @@ const Directory = () => {
     returnedDoctors = [];
     axios
       .get(
-        "http://localhost:8080/api/doctor/find?name=" + e.target.name.value,
+        "https://zjhealth.herokuapp.com/api/doctor/find?name=" + e.target.name.value,
         {
           withCredentials: true,
         }
@@ -46,7 +46,7 @@ const Directory = () => {
   };
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/doctor/list", {
+      .get("https://zjhealth.herokuapp.com/api/doctor/list", {
         withCredentials: true,
       })
       .then((response) => {

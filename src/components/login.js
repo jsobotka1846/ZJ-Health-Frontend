@@ -10,7 +10,7 @@ const Login = () => {
     const password = e.target.password.value;
     const credentials = { email, password };
 
-    fetch("http://localhost:8080/api/user/login", {
+    fetch("https://zjhealth.herokuapp.com/api/user/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(credentials),

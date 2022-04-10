@@ -12,7 +12,7 @@ const Treatment = () => {
     const treatmentReason = e.target.treatmentReason.value;
     const req = { treatmentName, treatmentReason };
     fetch(
-      "http://localhost:8080/api/appointment/update/" +
+      "https://zjhealth.herokuapp.com/api/appointment/update/" +
         params.appointmentId +
         "/treatment",
       {
@@ -31,7 +31,7 @@ const Treatment = () => {
       navigate("/login");
     }
     else {
-        axios.get("http://localhost:8080/api/user/role", {
+        axios.get("https://zjhealth.herokuapp.com/api/user/role", {
             withCredentials: true
         }).then((response) => {
             let role=response.data;

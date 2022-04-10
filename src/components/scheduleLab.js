@@ -12,7 +12,7 @@ const ScheduleLab = () => {
     const date = e.target.date.value;
     const patientEmail = e.target.patientEmail.value;
     const req = { testName, patientEmail, date };
-    fetch("http://localhost:8080/api/lab/create", {
+    fetch("https://zjhealth.herokuapp.com/api/lab/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(req),
@@ -41,7 +41,7 @@ const ScheduleLab = () => {
       navigate("/login");
     }
     else {
-        axios.get("http://localhost:8080/api/user/role", {
+        axios.get("https://zjhealth.herokuapp.com/api/user/role", {
             withCredentials: true
         }).then((response) => {
             let role=response.data;

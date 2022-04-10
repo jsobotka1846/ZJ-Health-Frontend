@@ -9,7 +9,7 @@ const Forgot = () => {
     const email = e.target.email.value;
 
     const req = { email };
-    fetch("http://localhost:8080/api/user/forgot", {
+    fetch("https://zjhealth.herokuapp.com/api/user/forgot", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(req),

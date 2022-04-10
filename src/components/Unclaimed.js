@@ -10,7 +10,7 @@ const Unclaimed = () => {
 
   const delAppt = (id) => {
     axios
-      .delete("http://localhost:8080/api/appointment/delete/" + id, {
+      .delete("https://zjhealth.herokuapp.com/api/appointment/delete/" + id, {
         withCredentials: true,
       })
       .then(() => {
@@ -19,7 +19,7 @@ const Unclaimed = () => {
   };
 
   const claimAppt = (id) => {
-    fetch("http://localhost:8080/api/appointment/addDoctor/" + id, {
+    fetch("https://zjhealth.herokuapp.com/api/appointment/addDoctor/" + id, {
       method: "PUT",
       credentials: "include",
     }).then(() => {
@@ -32,7 +32,7 @@ const Unclaimed = () => {
       navigate("/login");
     }
     axios
-      .get("http://localhost:8080/api/appointment/list/unassigned", {
+      .get("https://zjhealth.herokuapp.com/api/appointment/list/unassigned", {
         withCredentials: true,
       })
       .then((response) => {

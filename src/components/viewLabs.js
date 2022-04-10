@@ -12,7 +12,7 @@ const ViewLabs = () => {
         e.preventDefault();
         const result = e.target.result.value;
         const req = { result, id };
-        fetch("http://localhost:8080/api/lab/update/result", {
+        fetch("https://zjhealth.herokuapp.com/api/lab/update/result", {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(req),

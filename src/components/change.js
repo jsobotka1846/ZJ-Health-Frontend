@@ -12,7 +12,7 @@ const Change = () => {
     const newPassword = e.target.newPassword.value;
 
     const req = { newPassword };
-    fetch("http://localhost:8080/api/user/forgot/" + params.token, {
+    fetch("https://zjhealth.herokuapp.com/api/user/forgot/" + params.token, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(req),
@@ -31,7 +31,7 @@ const Change = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/user/forgot/" + params.token, {
+      .get("https://zjhealth.herokuapp.com/api/user/forgot/" + params.token, {
         withCredentials: true,
       })
 

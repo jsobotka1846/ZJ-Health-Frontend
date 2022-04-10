@@ -14,7 +14,7 @@ const CreatePrescription = () => {
     const condition = e.target.condition.value;
     const patientEmail = e.target.patient.value;
     const req = { name, quantity, pharmacy, condition, patientEmail };
-    fetch("http://localhost:8080/api/prescription/create", {
+    fetch("https://zjhealth.herokuapp.com/api/prescription/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(req),
@@ -33,7 +33,7 @@ const CreatePrescription = () => {
       navigate("/login");
     }
     else {
-        axios.get("http://localhost:8080/api/user/role", {
+        axios.get("https://zjhealth.herokuapp.com/api/user/role", {
             withCredentials: true
         }).then((response) => {
             let role=response.data;

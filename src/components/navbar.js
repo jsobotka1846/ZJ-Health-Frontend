@@ -17,7 +17,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   var session = Cookies.get("JSESSIONID");
   const logout = (e) => {
-    fetch("http://localhost:8080/logout", {
+    fetch("https://zjhealth.herokuapp.com/logout", {
       method: "POST",
       credentials: "include",
     }).then(() => {
@@ -51,7 +51,7 @@ const Navbar = () => {
       setRecord(null);
     } else {
       axios
-        .get("http://localhost:8080/api/user/role", {
+        .get("https://zjhealth.herokuapp.com/api/user/role", {
           withCredentials: true,
         })
         .then((response) => {

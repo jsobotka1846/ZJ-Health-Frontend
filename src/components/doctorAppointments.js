@@ -65,7 +65,7 @@ const DoctorAppt = () => {
       navigate("/login");
     }
     else {
-      axios.get("http://localhost:8080/api/user/role", {
+      axios.get("https://zjhealth.herokuapp.com/api/user/role", {
           withCredentials: true
       }).then((response) => {
           let role=response.data;
@@ -75,7 +75,7 @@ const DoctorAppt = () => {
       })
     }
     axios
-      .get("http://localhost:8080/api/doctor/appointments/list", {
+      .get("https://zjhealth.herokuapp.com/api/doctor/appointments/list", {
         withCredentials: true,
       })
       .then((response) => {

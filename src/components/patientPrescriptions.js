@@ -9,7 +9,7 @@ const PatientPrescriptions = () => {
 
   const createPdf = (id) => {
     axios
-      .get("http://localhost:8080/api/prescription/download/" + id, {
+      .get("https://zjhealth.herokuapp.com/api/prescription/download/" + id, {
         withCredentials: true,
         responseType: "blob",
       })
@@ -26,7 +26,7 @@ const PatientPrescriptions = () => {
       navigate("/login");
     }
     axios
-      .get("http://localhost:8080/api/prescription/list/patient", {
+      .get("https://zjhealth.herokuapp.com/api/prescription/list/patient", {
         withCredentials: true,
       })
       .then((response) => {

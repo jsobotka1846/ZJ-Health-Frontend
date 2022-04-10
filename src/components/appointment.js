@@ -41,7 +41,7 @@ const Appointment = () => {
       allergyDesc,
     };
     const req = { emails, intake };
-    fetch("http://localhost:8080/api/appointment/create", {
+    fetch("https://zjhealth.herokuapp.com/api/appointment/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(req),

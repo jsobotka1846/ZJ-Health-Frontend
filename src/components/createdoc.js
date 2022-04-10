@@ -16,7 +16,7 @@ const Createdoc = () => {
       navigate("/login");
     }
     axios
-      .get("http://localhost:8080/api/department/list", {
+      .get("https://zjhealth.herokuapp.com/api/department/list", {
         withCredentials: true,
       })
       .then((response) => {
@@ -41,7 +41,7 @@ const Createdoc = () => {
     docInfo.append("specialty", specialty);
     docInfo.append("salary", salary);
     docInfo.append("photoPath", photoPath);
-    fetch("http://localhost:8080/api/doctor/update", {
+    fetch("https://zjhealth.herokuapp.com/api/doctor/update", {
       method: "PUT",
       body: docInfo,
       credentials: "include",
@@ -66,7 +66,7 @@ const Createdoc = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const req2 = { email };
-    fetch("http://localhost:8080/api/user/update", {
+    fetch("https://zjhealth.herokuapp.com/api/user/update", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(req2),

@@ -56,7 +56,7 @@ const MedicalRecord = () => {
     }
     if (params.patientId != null) {
       axios
-        .get("http://localhost:8080/api/record/view/" + params.patientId, {
+        .get("https://zjhealth.herokuapp.com/api/record/view/" + params.patientId, {
           withCredentials: true,
         })
         .then((response) => {
@@ -64,7 +64,7 @@ const MedicalRecord = () => {
         });
     } else {
       axios
-        .get("http://localhost:8080/api/record/view/current", {
+        .get("https://zjhealth.herokuapp.com/api/record/view/current", {
           withCredentials: true,
         })
         .then((response) => {

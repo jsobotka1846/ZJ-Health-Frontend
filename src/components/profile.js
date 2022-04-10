@@ -14,7 +14,7 @@ const Profile = () => {
     const review = e.target.review.value;
     const req = { rating, review };
 
-    fetch("http://localhost:8080/api/appointment/review/" + id, {
+    fetch("https://zjhealth.herokuapp.com/api/appointment/review/" + id, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(req),
@@ -54,7 +54,7 @@ const Profile = () => {
 
   const delAppt = (id) => {
     axios
-      .delete("http://localhost:8080/api/appointment/delete/" + id, {
+      .delete("https://zjhealth.herokuapp.com/api/appointment/delete/" + id, {
         withCredentials: true,
       })
       .then(() => {
@@ -67,7 +67,7 @@ const Profile = () => {
       navigate("/login");
     }
     axios
-      .get("http://localhost:8080/api/appointment/user/appointments", {
+      .get("https://zjhealth.herokuapp.com/api/appointment/user/appointments", {
         withCredentials: true,
       })
       .then((response) => {
