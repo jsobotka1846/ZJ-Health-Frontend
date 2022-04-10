@@ -38,8 +38,6 @@ const Change = () => {
       .then((response) => {
         if (response.status != 200) {
           navigate("/");
-        } else {
-          navigate("/login");
         }
       });
   }, []);
@@ -65,7 +63,7 @@ const Change = () => {
 
                   <div className="col-md-12 form-outline form-white mb-4">
                     <input
-                      type="newPassword"
+                      type="password"
                       name="newPassword"
                       className="form-control"
                       required
