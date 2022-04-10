@@ -19,7 +19,7 @@ const Diagnosis = () => {
         credentials: "include",
       }
     ).then(() => {
-      console.log("diag created");
+      navigate("/doctor/appointments")
     });
   };
 

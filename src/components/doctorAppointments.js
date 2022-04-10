@@ -11,7 +11,7 @@ const DoctorAppt = () => {
 
   const viewForm = (intake) => {
     setViewIntake(
-      <div className="intake" style={{ top: window.scrollY + 100, right: 100 }}>
+      <div className="intake" style={{ top: window.scrollY + 100, right: 20 }}>
         <button
           onClick={() => setViewIntake(null)}
           className="btn btn-primary close"

@@ -178,7 +178,6 @@ const Appointment = () => {
                       type="date"
                       name="symptomOnset"
                       className="form-control"
-                      required
                     />
                     <label className="form-label">Symptom Onset Date</label>
                   </div>
@@ -239,7 +238,6 @@ const Appointment = () => {
                       type="date"
                       name="diagDate"
                       className="form-control"
-                      required
                     />
                     <label className="form-label">Date of Diagnosis</label>
                   </div>
