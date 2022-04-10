@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Forgot = () => {
   let navigate = useNavigate();
+  const [message, setMessage] = useState();
   const submit = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -11,7 +13,13 @@ const Forgot = () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(req),
-    }).then(() => {});
+    }).then(() => {
+      setMessage(
+        <h1 className="bg-success" style={{ fontSize: "16px" }}>
+          If email exists, reset password link sent.
+        </h1>
+      );
+    });
   };
 
   return (
@@ -24,6 +32,7 @@ const Forgot = () => {
               style={{ borderRadius: "1rem" }}
             >
               <div className="card-body p-5 text-center">
+                {message}
                 <div className="mb-md-5 mt-md-4 pb-5 row g-3">
                   <h2 className="font-weight-bold text-uppercase">
                     Forgot Password
