@@ -22,13 +22,11 @@ const Login = () => {
             Invalid email or password
           </h1>
         );
-        e.target.password.value="";
+        e.target.password.value = "";
       } else {
-        response.json().then(data => {
+        response.json().then((data) => {
           navigate("/profile");
-        })
-        
-        
+        });
       }
     });
   };
@@ -69,7 +67,7 @@ const Login = () => {
                   </div>
 
                   <p className="small mb-5 pb-lg-2">
-                    <a className="text-white-50" href="#">
+                    <a className="text-white-50" href="../forgot">
                       Forgot password?
                     </a>
                   </p>
