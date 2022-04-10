@@ -24,9 +24,7 @@ const Login = () => {
         );
         e.target.password.value = "";
       } else {
-        response.json().then((data) => {
           navigate("/profile");
-        });
       }
     });
   };
