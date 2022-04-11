@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -24,7 +25,10 @@ const Login = () => {
         );
         e.target.password.value = "";
       } else {
-          navigate("/profile");
+          // response.json().then((data) => {
+          //   Cookies.set("JSESSIONID", data.sessionId, {path: '/', domain: ''})
+          // })
+          // navigate("/profile");
       }
     });
   };
