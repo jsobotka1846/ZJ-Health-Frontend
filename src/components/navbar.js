@@ -21,6 +21,7 @@ const Navbar = () => {
       method: "POST",
       credentials: "include",
     }).then(() => {
+      Cookies.remove("JESSIONID");
       navigate("/");
     });
   };
@@ -49,6 +50,7 @@ const Navbar = () => {
       setCreatePrescription(null);
       setDrAppt(null);
       setRecord(null);
+      setViewUnclaimedAppt(null);
     } else {
       axios
         .get("https://zjhealth.herokuapp.com/api/user/role", {
