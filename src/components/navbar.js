@@ -21,7 +21,7 @@ const Navbar = () => {
       method: "POST",
       credentials: "include",
     }).then(() => {
-      Cookies.remove("JESSIONID");
+      Cookies.remove("JSESSIONID");
       navigate("/");
     });
   };
