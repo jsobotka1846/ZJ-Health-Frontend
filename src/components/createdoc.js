@@ -20,6 +20,10 @@ const Createdoc = () => {
         withCredentials: true,
       })
       .then((response) => {
+        let role = response.data;
+        if (role != "administrator") {
+          navigate("/");
+        }
         for (let dept of response.data) {
           depts.push(<option value={dept.name}>{dept.name}</option>);
         }

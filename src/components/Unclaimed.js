@@ -41,10 +41,7 @@ const Unclaimed = () => {
             <div className="card text-middle bg-primary border border-dark border-5 mb-3 col-4 mx-auto">
               <div className="card-body">
                 <h5 className="card-title text-light">Appointment</h5>
-                <p className="card-text text-light">
-                  {/* {appt.patient.firstName} {appt.patient.lastName} */}
-                  No Doctor Assigned
-                </p>
+                <p className="card-text text-light">No Doctor Assigned</p>
                 <p className="card-text text-light">{appt.date}</p>
 
                 <button
