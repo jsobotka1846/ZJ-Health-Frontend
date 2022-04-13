@@ -63,12 +63,11 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    const cancelReq = axios.CancelToken.source();
+    let data = true;
     if (Cookies.get("JSESSIONID") == null) {
       navigate("/login");
     }
-    axios
-      .get("https://zjhealth.herokuapp.com/api/appointment/user/appointments", {
+    await axios.get("https://zjhealth.herokuapp.com/api/appointment/user/appointments", {
         withCredentials: true,
       })
       .then((response) => {
@@ -108,11 +107,14 @@ const Profile = () => {
             );
           }
         }
-        setAppointments(appts);
+        if (data==true) {
+          setAppointments(appts);
+
+        }
       });
       
       return () => {
-        cancelReq.cancel();
+        data=false;
       };
   }, []);
   
