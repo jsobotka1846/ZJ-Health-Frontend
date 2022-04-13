@@ -54,12 +54,26 @@ const ViewLabs = () => {
 
     }
 
+    const viewPdf = (id) => {
+        axios.get("https://zjhealth.herokuapp.com/api/lab/pdf/" + id, {
+        withCredentials: true,
+        responseType: "blob",
+      })
+      .then((response) => {
+        const pdf = URL.createObjectURL(
+          new Blob([response.data], { type: "application/pdf" })
+        );
+        window.open(pdf);
+      });
+
+    }
+
     useEffect(() => {
         if (Cookies.get("JSESSIONID") == null) {
             navigate("/login");
         }
         else {
-            axios.get("http://localhost:8080/api/user/role", {
+            axios.get("https://zjhealth.herokuapp.com/api/user/role", {
                 withCredentials: true
             }).then((response) => {
                 let role=response.data;
@@ -68,7 +82,7 @@ const ViewLabs = () => {
                 }
             })
         }
-        axios.get("http://localhost:8080/api/lab/view/labs", {
+        axios.get("https://zjhealth.herokuapp.com/api/lab/view/labs", {
             withCredentials: true,
         }).then((response) => {
           let labs = [];
@@ -90,6 +104,14 @@ const ViewLabs = () => {
                     className="btn btn-primary border btn-outline-success text-light"
                     >
                     Update Result
+                    </button>
+                )}
+                {lab.result != null && (
+                    <button
+                    onClick={() => viewPdf(lab.id)}
+                    className="btn btn-primary border btn-outline-success text-light"
+                    >
+                    View PDF
                     </button>
                 )}
                 </div>

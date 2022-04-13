@@ -8,6 +8,7 @@ const Signup = () => {
       const password = e.target.password.value;
       const firstName = e.target.firstName.value;
       const lastName = e.target.lastName.value;
+      const age = e.target.age.value
       const street = e.target.street.value;
       const city = e.target.city.value;
       const state = e.target.state.value;
@@ -16,7 +17,7 @@ const Signup = () => {
       const insuranceName = e.target.insuranceName.value;
       const type = e.target.type.value;
       const policyNum = e.target.policyNum.value;
-      const user = {email, password, firstName, lastName, street, city, state, zip, phoneNum};
+      const user = {email, password, firstName, lastName, age, street, city, state, zip, phoneNum};
       const insurance = {insuranceName, type, policyNum};
       const req = {user, insurance};
       fetch("https://zjhealth.herokuapp.com/api/user/register", {
@@ -63,6 +64,11 @@ const Signup = () => {
                   <div className="col-md-6 form-outline form-white mb-4">
                       <input type="text" name="lastName" className="form-control"required/>
                       <label className="form-label">Last Name</label>
+                  </div>
+
+                  <div className="col-md-6 form-outline form-white mb-4">
+                      <input type="number" name="age" className="form-control"required/>
+                      <label className="form-label">Age</label>
                   </div>
 
                   <div className="form-outline form-white mb-4">

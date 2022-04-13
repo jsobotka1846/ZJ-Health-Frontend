@@ -107,9 +107,9 @@ const Profile = () => {
             );
           }
         }
-        setAppointments(appts);
       });
   }, []);
+  setAppointments(appts);
 
   return (
     <div className="profile">
