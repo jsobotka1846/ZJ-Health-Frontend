@@ -9,6 +9,7 @@ const Navbar = () => {
   const [profile, setProfile] = useState();
   const [viewLabs, setViewLabs] = useState();
   const [record, setRecord] = useState();
+  const [reviews, setReviews] = useState();
   const [createDr, setCreateDr] = useState();
   const [viewUnclaimedAppt, setViewUnclaimedAppt] = useState();
   const [drAppt, setDrAppt] = useState();
@@ -49,6 +50,8 @@ const Navbar = () => {
       setCreatePrescription(null);
       setDrAppt(null);
       setRecord(null);
+      setViewUnclaimedAppt(null);
+      setReviews(null);
     } else {
       axios
         .get("http://localhost:8080/api/user/role", {
@@ -64,6 +67,15 @@ const Navbar = () => {
                 style={{ color: "white" }}
               >
                 Add/Remove Doctor
+              </a>
+            );
+            setReviews(
+              <a
+                className="item nav-link"
+                href="/admin/reviews"
+                style={{ color: "white" }}
+              >
+                View Appointment Reviews
               </a>
             );
           } else if (role == "doctor") {
@@ -203,6 +215,7 @@ const Navbar = () => {
               {viewLabs}
               {createPrescription}
               {viewUnclaimedAppt}
+              {reviews}
             </div>
           </div>
           {status}

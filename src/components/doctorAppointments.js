@@ -74,8 +74,7 @@ const DoctorAppt = () => {
           }
       })
     }
-    axios
-      .get("http://localhost:8080/api/doctor/appointments/list", {
+    axios.get("http://localhost:8080/api/doctor/appointments/list", {
         withCredentials: true,
       })
       .then((response) => {
