@@ -63,6 +63,7 @@ const Profile = () => {
   };
 
   useEffect(() => {
+    const cancelReq = axios.CancelToken.source();
     if (Cookies.get("JSESSIONID") == null) {
       navigate("/login");
     }
@@ -110,7 +111,9 @@ const Profile = () => {
         setAppointments(appts);
       });
       
-      return () => {};
+      return () => {
+        cancelReq.cancel();
+      };
   }, []);
   
 
