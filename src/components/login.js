@@ -26,9 +26,10 @@ const Login = () => {
         e.target.password.value = "";
       } else {
           response.json().then((data) => {
-            Cookies.set("JSESSIONID", data.sessionId, {path: '/', sameSite: 'None', secure: 'true'})
+            Cookies.set("JSESSIONID", data.sessionId, {path: '/', sameSite: 'None', secure: 'true'});
+            navigate("/profile");
           })
-          navigate("/profile");
+          
       }
     });
   };
