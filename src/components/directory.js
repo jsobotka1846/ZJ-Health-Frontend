@@ -22,7 +22,7 @@ const Directory = () => {
             <div className="col-11 col-md-6 col-lg-3 mx=0 mb-4">
               <div className="card p-0 overfolow-hidden h-100 shadow">
                 <img
-                  src={URL("http://localhost:8080/images/" + user.doctor.photoPath)}
+                  src={"https://zjhealth.herokuapp.com/src/main/resources/static/images/" + user.email+user.doctor.photoPath}
                   className="card-img-top"
                 />
                 <div className="card-body">
@@ -55,7 +55,7 @@ const Directory = () => {
             <div className="col-11 col-md-6 col-lg-3 mx=0 mb-4">
               <div className="card p-0 overfolow-hidden h-100 shadow">
                 <img
-                  src={"http://localhost:8080/src/main/resources/static/images/" + user.email+user.doctor.photoPath}
+                  src={"https://zjhealth.herokuapp.com/src/main/resources/static/images/" + user.email+user.doctor.photoPath}
                   className="card-img-top"
                 />
                 <div className="card-body">
