@@ -54,6 +54,20 @@ const ViewLabs = () => {
 
     }
 
+    const viewPdf = (id) => {
+        axios.get("http://localhost:8080/api/lab/pdf/" + id, {
+        withCredentials: true,
+        responseType: "blob",
+      })
+      .then((response) => {
+        const pdf = URL.createObjectURL(
+          new Blob([response.data], { type: "application/pdf" })
+        );
+        window.open(pdf);
+      });
+
+    }
+
     useEffect(() => {
         if (Cookies.get("JSESSIONID") == null) {
             navigate("/login");
@@ -90,6 +104,14 @@ const ViewLabs = () => {
                     className="btn btn-primary border btn-outline-success text-light"
                     >
                     Update Result
+                    </button>
+                )}
+                {lab.result != null && (
+                    <button
+                    onClick={() => viewPdf(lab.id)}
+                    className="btn btn-primary border btn-outline-success text-light"
+                    >
+                    View PDF
                     </button>
                 )}
                 </div>
