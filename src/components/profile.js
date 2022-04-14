@@ -30,7 +30,7 @@ const Profile = () => {
       <div className="container">
         <div
           className="review"
-          style={{ top: window.scrollY + 280, right: 100 }}
+          style={{ top: window.scrollY + 280, right: 10 }}
         >
           <button
             onClick={() => setForm(null)}
@@ -41,7 +41,7 @@ const Profile = () => {
           <h5>Appointment Review Form</h5>
           <hr />
           <form onSubmit={(e) => submitReview(e, id)}>
-            <input type="number" name="rating" placeholder="Rating" required />
+            <input type="number" name="rating" placeholder="Rating Out of 5" required />
             <br />
             <input type="text" name="review" placeholder="Review" required />
             <br />
