@@ -65,7 +65,7 @@ const AdminStatistics = () => {
     let diagCount = 0;
     const [states, setStates] = useState({});
     useEffect(() => {
-        axios.get("http://localhost:8080/api/user/admin/statistics", {
+        axios.get("https://zjhealth.herokuapp.com/api/user/admin/statistics", {
             withCredentials: true
         })
         .then((response) => {

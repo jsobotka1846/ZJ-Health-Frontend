@@ -16,7 +16,7 @@ const Createdoc = () => {
       navigate("/login");
     }
     axios
-      .get("https://zjhealth.herokuapp.com/api/department/list", {
+      .get("https://zjhealth.herokuapp.com/api/user/role", {
             withCredentials: true
         }).then((response) => {
             let role=response.data;
@@ -24,7 +24,7 @@ const Createdoc = () => {
                 navigate("/");
             }
         })
-    axios.get("http://localhost:8080/api/department/list", {
+    axios.get("https://zjhealth.herokuapp.com/api/department/list", {
         withCredentials: true,
       })
       .then((response) => {
