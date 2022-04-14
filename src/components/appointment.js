@@ -47,17 +47,15 @@ const Appointment = () => {
       body: JSON.stringify(req),
       credentials: "include",
     }).then((response) => {
-      if (response.status==200) {
+      if (response.status == 200) {
         navigate("/profile");
-      }
-      else if (response.status==409) {
+      } else if (response.status == 409) {
         setMessage(
           <h1 className="bg-danger" style={{ fontSize: "16px" }}>
             Appoint Time Conflict, Please Choose Another Time
           </h1>
         );
       }
-      
     });
   };
 
@@ -92,18 +90,17 @@ const Appointment = () => {
                   </div>
 
                   <div className="col-md-6 form-outline form-white mb-4">
-                      <select
-                        type="text"
-                        name="type"
-                        className="form-select"
-                        required
-                      >
-                        <option value="In Person">In Person</option>
-                        <option value="Telehealth">Telehealth</option>
-                        
-                      </select>
-                      <label className="form-label">Type of Appointment</label>
-                    </div>
+                    <select
+                      type="text"
+                      name="type"
+                      className="form-select"
+                      required
+                    >
+                      <option value="In Person">In Person</option>
+                      <option value="Telehealth">Telehealth</option>
+                    </select>
+                    <label className="form-label">Type of Appointment</label>
+                  </div>
 
                   <div className="col-md-6 form-outline form-white mb-4">
                     <input
@@ -188,7 +185,6 @@ const Appointment = () => {
                       cols="50"
                       name="symptomDesc"
                       className="form-control"
-                      required
                     />
                     <label className="form-label">Symptom Description</label>
                   </div>
@@ -196,6 +192,7 @@ const Appointment = () => {
                   <div className="col-md-3 form-outline form-white mb-4">
                     <input
                       type="number"
+                      step="0.01"
                       name="currentTemp"
                       className="form-control"
                       required
@@ -208,7 +205,6 @@ const Appointment = () => {
                       type="text"
                       name="medicationName"
                       className="form-control"
-                      required
                     />
                     <label className="form-label">Current Medications</label>
                   </div>
@@ -218,7 +214,6 @@ const Appointment = () => {
                       type="text"
                       name="doseage"
                       className="form-control"
-                      required
                     />
                     <label className="form-label">Doseage of Medication</label>
                   </div>
@@ -228,7 +223,6 @@ const Appointment = () => {
                       type="text"
                       name="priorCondition"
                       className="form-control"
-                      required
                     />
                     <label className="form-label">Prior Condition(s)</label>
                   </div>
@@ -247,7 +241,6 @@ const Appointment = () => {
                       type="text"
                       name="allergyName"
                       className="form-control"
-                      required
                     />
                     <label className="form-label">Current Allergies</label>
                   </div>
@@ -258,7 +251,6 @@ const Appointment = () => {
                       cols="50"
                       name="allergyDesc"
                       className="form-control"
-                      required
                     />
                     <label className="form-label">Allergy Description</label>
                   </div>
