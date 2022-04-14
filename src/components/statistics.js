@@ -227,6 +227,7 @@ const AdminStatistics = () => {
                 
                 />
             </div>
+            <div>Total number of diagnoses: {diagnoses}</div>
         </div>
       );
 }
