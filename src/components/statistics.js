@@ -128,12 +128,17 @@ const AdminStatistics = () => {
 
   return (
     <div className="container">
-      <br />
-      <br />
-      <div style={{ height: "300px" }}>
+        <br />
+        <br />
+        <div>
+            <h2>Total number of diagnoses: {diagnoses}</h2>
+        </div>
+        <br />
+        <br />
+        <div style={{ height: "300px" }}>
         <p>States of Patients</p>
         <PieChart
-          data={[
+            data={[
             { title: "AL", value: states["AL"], color: "#C0C0C0" },
             { title: "AK", value: states["AK"], color: "#808080" },
             { title: "AR", value: states["AR"], color: "#800080" },
@@ -185,72 +190,69 @@ const AdminStatistics = () => {
             { title: "WI", value: states["WI"], color: "#e4fa1b" },
             { title: "WV", value: states["WV"], color: "#759e1c" },
             { title: "WY", value: states["WY"], color: "#0d8537" },
-          ]}
+            ]}
         />
-      </div>
-      <div>
+        </div>
+        <div>
         <br />
         <br />
         <hr />
         <p>Age of Registered Patients</p>
         <Bar
-          data={{
+            data={{
             labels: [
-              "0-12",
-              "13-18",
-              "19-25",
-              "26-30",
-              "31-40",
-              "41-50",
-              "51-60",
-              "61-70",
-              "71-80",
-              "81-90",
-              "91-100",
-              "101-110",
+                "0-12",
+                "13-18",
+                "19-25",
+                "26-30",
+                "31-40",
+                "41-50",
+                "51-60",
+                "61-70",
+                "71-80",
+                "81-90",
+                "91-100",
+                "101-110",
             ],
             datasets: [
-              {
+                {
                 data: [
-                  ages[0],
-                  ages[1],
-                  ages[2],
-                  ages[3],
-                  ages[4],
-                  ages[5],
-                  ages[6],
-                  ages[7],
-                  ages[8],
-                  ages[9],
-                  ages[10],
-                  ages[11],
+                    ages[0],
+                    ages[1],
+                    ages[2],
+                    ages[3],
+                    ages[4],
+                    ages[5],
+                    ages[6],
+                    ages[7],
+                    ages[8],
+                    ages[9],
+                    ages[10],
+                    ages[11],
                 ],
-              },
+                },
             ],
-          }}
-          options={{
+            }}
+            options={{
             scales: {
-              y: {
+                y: {
                 title: {
-                  display: true,
-                  text: "Number of Patients",
+                    display: true,
+                    text: "Number of Patients",
                 },
-              },
-              x: {
+                },
+                x: {
                 title: {
-                  display: true,
-                  text: "Age",
+                    display: true,
+                    text: "Age",
                 },
-              },
+                },
             },
-          }}
+            }}
         />
-      </div>
-      <br />
-      <br />
-      <div>
-        <h2>Total number of diagnoses: {diagnoses}</h2>
-      </div>
+        </div>
+
+        
     </div>
   );
 };
