@@ -246,7 +246,11 @@ const AdminStatistics = () => {
           }}
         />
       </div>
-      <div>Total number of diagnoses: {diagnoses}</div>
+      <br />
+      <br />
+      <div>
+        <h2>Total number of diagnoses: {diagnoses}</h2>
+      </div>
     </div>
   );
 };

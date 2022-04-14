@@ -13,6 +13,7 @@ const Navbar = () => {
   const [adminStats, setAdminStats] = useState();
   const [createDr, setCreateDr] = useState();
   const [viewUnclaimedAppt, setViewUnclaimedAppt] = useState();
+  const [viewDoctorStats, setViewDoctorStats] = useState();
   const [drAppt, setDrAppt] = useState();
   const [lab, setLab] = useState();
   const [createPrescription, setCreatePrescription] = useState();
@@ -54,6 +55,7 @@ const Navbar = () => {
       setViewUnclaimedAppt(null);
       setReviews(null);
       setAdminStats(null);
+      setViewDoctorStats(null);
     } else {
       axios
         .get("http://localhost:8080/api/user/role", {
@@ -118,7 +120,16 @@ const Navbar = () => {
               >
                 Update Labs
               </a>
+            );
 
+            setViewDoctorStats(
+              <a
+                className="item nav-link"
+                href="/doctor/statistics"
+                style={{ color: "white" }}
+              >
+                View Stats
+              </a>
             );
 
             setViewUnclaimedAppt(
@@ -228,6 +239,7 @@ const Navbar = () => {
               {viewUnclaimedAppt}
               {reviews}
               {adminStats}
+              {viewDoctorStats}
             </div>
           </div>
           {status}
