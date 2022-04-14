@@ -15,15 +15,18 @@ const Createdoc = () => {
     if (Cookies.get("JSESSIONID") == null) {
       navigate("/login");
     }
-    axios
-      .get("http://localhost:8080/api/department/list", {
+    axios.get("http://localhost:8080/api/user/role", {
+            withCredentials: true
+        }).then((response) => {
+            let role=response.data;
+            if (role!="administrator") {
+                navigate("/");
+            }
+        })
+    axios.get("http://localhost:8080/api/department/list", {
         withCredentials: true,
       })
       .then((response) => {
-        let role = response.data;
-        if (role != "administrator") {
-          navigate("/");
-        }
         for (let dept of response.data) {
           depts.push(<option value={dept.name}>{dept.name}</option>);
         }
