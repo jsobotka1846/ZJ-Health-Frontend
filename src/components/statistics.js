@@ -3,11 +3,15 @@ import { useEffect, useState } from "react";
 import { PieChart } from "react-minimal-pie-chart";
 import { Bar } from "react-chartjs-2";
 import { BarElement, Chart, LinearScale } from "chart.js";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
+
 import { CategoryScale } from "chart.js";
 const AdminStatistics = () => {
   Chart.register(CategoryScale, LinearScale, BarElement);
   const [ages, setAges] = useState([]);
   const [diagnoses, setDiagnoses] = useState();
+  const navigate = useNavigate();
   let statesDict = {
     AL: 0,
     AK: 0,
