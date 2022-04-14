@@ -83,7 +83,7 @@ const AdminStatistics = () => {
         }
       });
     axios
-      .get("https://zjhealth.herokuapp.comapi/user/admin/statistics", {
+      .get("https://zjhealth.herokuapp.com/api/user/admin/statistics", {
         withCredentials: true,
       })
       .then((response) => {
