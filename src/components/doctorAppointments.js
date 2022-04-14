@@ -23,7 +23,7 @@ const DoctorAppt = () => {
         <p>
           First Name: {intake.emergencyFirstName}
           <br />
-          Last Name: {intake.emergencyFirstName}
+          Last Name: {intake.emergencyLastName}
           <br />
           Phone Number: {intake.emergencyNum}
           <br />
@@ -72,7 +72,7 @@ const DoctorAppt = () => {
           if (role!="doctor") {
               navigate("/");
           }
-      })
+        });
     }
     axios
       .get("https://zjhealth.herokuapp.com/api/doctor/appointments/list", {

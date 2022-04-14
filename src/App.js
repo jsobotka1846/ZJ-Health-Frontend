@@ -21,6 +21,7 @@ import Treatment from "./components/treatment";
 import ViewLabs from "./components/viewLabs";
 import Reviews from "./components/reviews";
 import AdminStatistics from "./components/statistics";
+import DoctorStats from "./components/doctorStats";
 function App() {
   return (
     <BrowserRouter>
@@ -52,6 +53,7 @@ function App() {
               path="/doctor/appointments/update/:appointmentId/diagnosis/"
               element={<Diagnosis />}
             />
+            <Route path="/doctor/statistics" element={<DoctorStats />} />
             <Route
               path="/doctor/appointments/update/:appointmentId/treatment/"
               element={<Treatment />}
@@ -60,7 +62,7 @@ function App() {
             <Route path="/view/record" element={<MedicalRecord />} />
             <Route path="/view/labs" element={<ViewLabs />} />
             <Route path="/admin/reviews" element={<Reviews />} />
-            <Route path="/admin/statistics" element={<AdminStatistics/>} />
+            <Route path="/admin/statistics" element={<AdminStatistics />} />
           </Routes>
         </div>
       </div>
