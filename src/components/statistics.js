@@ -73,7 +73,7 @@ const AdminStatistics = () => {
       navigate("/login");
     }
     axios
-      .get("http://localhost:8080/api/user/role", {
+      .get("http://zjhealth.herokuapp.com/api/user/role", {
         withCredentials: true,
       })
       .then((response) => {
@@ -83,7 +83,7 @@ const AdminStatistics = () => {
         }
       });
     axios
-      .get("http://localhost:8080/api/user/admin/statistics", {
+      .get("https://zjhealth.herokuapp.comapi/user/admin/statistics", {
         withCredentials: true,
       })
       .then((response) => {

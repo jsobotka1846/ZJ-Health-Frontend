@@ -14,7 +14,7 @@ const DoctorStats = () => {
       navigate("/login");
     }
     axios
-      .get("http://localhost:8080/api/user/role", {
+      .get("https://zjhealth.herokuapp.com/api/user/role", {
         withCredentials: true,
       })
       .then((response) => {
@@ -25,7 +25,7 @@ const DoctorStats = () => {
       });
 
     axios
-      .get("http://localhost:8080/api/doctor/doctor/statistics", {
+      .get("https://zjhealth.herokuapp.com/api/doctor/doctor/statistics", {
         withCredentials: true,
       })
       .then((response) => {
