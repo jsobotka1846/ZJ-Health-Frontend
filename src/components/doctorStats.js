@@ -29,7 +29,6 @@ const DoctorStats = () => {
         withCredentials: true,
       })
       .then((response) => {
-        console.log(response.data);
         let complete = 0;
         let notComplete = 0;
         for (let doc of response.data) {
@@ -40,9 +39,7 @@ const DoctorStats = () => {
           }
         }
         setTotalCompleted(complete);
-        console.log(complete);
         setTotalNotCompleted(notComplete);
-        console.log(notComplete);
       });
   }, []);
 
@@ -67,7 +64,7 @@ const DoctorStats = () => {
         <div className="card text-middle bg-primary border border-dark border-5 mb-3 col-4 mx-auto">
           <div className="card-body">
             <h5 className="card-title text-light">
-              Appointments Not Completed
+              Appointments Completed
             </h5>
             <p className="card-text text-light">
               <h2>You have {totalCompleted} closed appointments.</h2>
