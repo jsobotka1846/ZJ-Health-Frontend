@@ -39,11 +39,9 @@ const Signup = () => {
                 Invalid request, email may already be in use.
               </h1>
             );
+            window.scrollTo(0, 0);
           }
-          
-
-        window.scrollTo(0, 0);
-      }
+      
     });
   };
 
