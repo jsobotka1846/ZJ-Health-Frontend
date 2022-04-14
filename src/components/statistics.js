@@ -61,7 +61,6 @@ const AdminStatistics = () => {
         "WV":0,
         "WY":0
     };
-    
     let ageList = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     let diagCount = 0;
     const [states, setStates] = useState({});
