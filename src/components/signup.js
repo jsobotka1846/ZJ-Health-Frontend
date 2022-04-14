@@ -115,6 +115,7 @@ const Signup = () => {
                     <input
                       type="number"
                       name="age"
+                      min="0"
                       className="form-control"
                       required
                     />
