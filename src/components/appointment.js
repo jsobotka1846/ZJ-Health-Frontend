@@ -57,6 +57,13 @@ const Appointment = () => {
           </h1>
         );
       }
+      else if (response.status==400) {
+        setMessage(
+          <h1 className="bg-danger" style={{ fontSize: "16px" }}>
+            Doctor Email Doesn't Exist
+          </h1>
+        );
+      }
       
     });
   };
