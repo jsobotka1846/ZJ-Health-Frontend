@@ -49,10 +49,10 @@ const Appointment = () => {
     }).then((response) => {
       if (response.status == 200) {
         navigate("/profile");
-      } else if (response.status == 409) {
+      } else if (response.status == 400) {
         setMessage(
           <h1 className="bg-danger" style={{ fontSize: "16px" }}>
-            Appoint Time Conflict, Please Choose Another Time
+            Doctor Email Doesn't Exist
           </h1>
         );
       }
