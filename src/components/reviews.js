@@ -15,7 +15,7 @@ const Reviews = () => {
           navigate("/login");
         }
         else {
-          axios.get("http://localhost:8080/api/user/role", {
+          axios.get("https://zjhealth.herokuapp.com/api/user/role", {
               withCredentials: true
           }).then((response) => {
               let role=response.data;
@@ -24,7 +24,7 @@ const Reviews = () => {
               }
           })
         }
-        axios.get("http://localhost:8080/api/appointment/admin/reviews", {
+        axios.get("https://zjhealth.herokuapp.com/api/appointment/admin/reviews", {
             withCredentials: true,
           })
           .then((response) => {
