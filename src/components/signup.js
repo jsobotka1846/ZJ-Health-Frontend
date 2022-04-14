@@ -4,44 +4,52 @@ const Signup = () => {
   const [message, setMessage] = useState();
   let navigate = useNavigate();
   const submit = (e) => {
-      e.preventDefault();
-      const email = e.target.email.value;
-      const password = e.target.password.value;
-      const firstName = e.target.firstName.value;
-      const lastName = e.target.lastName.value;
-      const age = e.target.age.value
-      const street = e.target.street.value;
-      const city = e.target.city.value;
-      const state = e.target.state.value;
-      const zip = e.target.zip.value;
-      const phoneNum = e.target.phoneNum.value;
-      const insuranceName = e.target.insuranceName.value;
-      const type = e.target.type.value;
-      const policyNum = e.target.policyNum.value;
-      const user = {email, password, firstName, lastName, age, street, city, state, zip, phoneNum};
-      const insurance = {insuranceName, type, policyNum};
-      const req = {user, insurance};
-      fetch("https://zjhealth.herokuapp.com/api/user/register", {
-          method: "POST",
-          headers: {"Content-Type": "application/json"},
-          body: JSON.stringify(req)
-          
-      }).then((response)=> {
-          if (response.status==200) {
-            navigate("/login");
-          }
-          else {
-            setMessage(
-              <h1
-                className="bg-danger"
-                style={{ fontSize: "16px", color: "white" }}
-              >
-                Invalid request, email may already be in use.
-              </h1>
-            );
-            window.scrollTo(0, 0);
-          }
-      
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    const firstName = e.target.firstName.value;
+    const lastName = e.target.lastName.value;
+    const age = e.target.age.value;
+    const street = e.target.street.value;
+    const city = e.target.city.value;
+    const state = e.target.state.value;
+    const zip = e.target.zip.value;
+    const phoneNum = e.target.phoneNum.value;
+    const insuranceName = e.target.insuranceName.value;
+    const type = e.target.type.value;
+    const policyNum = e.target.policyNum.value;
+    const user = {
+      email,
+      password,
+      firstName,
+      lastName,
+      age,
+      street,
+      city,
+      state,
+      zip,
+      phoneNum,
+    };
+    const insurance = { insuranceName, type, policyNum };
+    const req = { user, insurance };
+    fetch("https://zjhealth.herokuapp.com/api/user/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(req),
+    }).then((response) => {
+      if (response.status == 200) {
+        navigate("/login");
+      } else {
+        setMessage(
+          <h1
+            className="bg-danger"
+            style={{ fontSize: "16px", color: "white" }}
+          >
+            Invalid request, email may already be in use.
+          </h1>
+        );
+        window.scrollTo(0, 0);
+      }
     });
   };
 
@@ -105,6 +113,7 @@ const Signup = () => {
                   <div className="col-md-6 form-outline form-white mb-4">
                     <input
                       type="number"
+                      min="0"
                       name="age"
                       className="form-control"
                       required

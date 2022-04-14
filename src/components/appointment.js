@@ -191,7 +191,8 @@ const Appointment = () => {
 
                   <div className="col-md-3 form-outline form-white mb-4">
                     <input
-                      type="text"
+                      type="number"
+                      step="0.01"
                       name="currentTemp"
                       className="form-control"
                       required
