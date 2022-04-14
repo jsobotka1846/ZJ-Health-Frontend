@@ -17,6 +17,14 @@ const Createdoc = () => {
     }
     axios
       .get("https://zjhealth.herokuapp.com/api/department/list", {
+            withCredentials: true
+        }).then((response) => {
+            let role=response.data;
+            if (role!="administrator") {
+                navigate("/");
+            }
+        })
+    axios.get("http://localhost:8080/api/department/list", {
         withCredentials: true,
       })
       .then((response) => {

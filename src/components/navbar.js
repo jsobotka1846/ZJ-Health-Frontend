@@ -9,6 +9,8 @@ const Navbar = () => {
   const [profile, setProfile] = useState();
   const [viewLabs, setViewLabs] = useState();
   const [record, setRecord] = useState();
+  const [reviews, setReviews] = useState();
+  const [adminStats, setAdminStats] = useState();
   const [createDr, setCreateDr] = useState();
   const [viewUnclaimedAppt, setViewUnclaimedAppt] = useState();
   const [drAppt, setDrAppt] = useState();
@@ -51,6 +53,8 @@ const Navbar = () => {
       setDrAppt(null);
       setRecord(null);
       setViewUnclaimedAppt(null);
+      setReviews(null);
+      setAdminStats(null);
     } else {
       axios
         .get("https://zjhealth.herokuapp.com/api/user/role", {
@@ -66,6 +70,24 @@ const Navbar = () => {
                 style={{ color: "white" }}
               >
                 Add/Remove Doctor
+              </a>
+            );
+            setReviews(
+              <a
+                className="item nav-link"
+                href="/admin/reviews"
+                style={{ color: "white" }}
+              >
+                View Appointment Reviews
+              </a>
+            );
+            setAdminStats(
+              <a
+                className="item nav-link"
+                href="/admin/statistics"
+                style={{ color: "white" }}
+              >
+                View Hospital Statistics
               </a>
             );
           } else if (role == "doctor") {
@@ -205,6 +227,8 @@ const Navbar = () => {
               {viewLabs}
               {createPrescription}
               {viewUnclaimedAppt}
+              {reviews}
+              {adminStats}
             </div>
           </div>
           {status}
